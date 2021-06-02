@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11155372",
+      "name": "fedora",
+      "font_class": "fedora",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "18019783",
+      "name": "opensuse",
+      "font_class": "opensuse",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "18752806",
+      "name": "openbsd",
+      "font_class": "openbsd",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "20584809",
+      "name": "eclipse",
+      "font_class": "eclipse",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "7225565",
+      "name": "ceph",
+      "font_class": "ceph",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
       "icon_id": "7171550",
       "name": "picto-ubuntukylin",
       "font_class": "ubuntukylin",
@@ -46,13 +81,6 @@
       "font_class": "homebrew",
       "unicode": "e612",
       "unicode_decimal": 58898
-    },
-    {
-      "icon_id": "19184482",
-      "name": "homebrew",
-      "font_class": "homebrew-bottles",
-      "unicode": "edd4",
-      "unicode_decimal": 60884
     },
     {
       "icon_id": "11155484",
