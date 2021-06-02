@@ -1,0 +1,132 @@
+{
+    "MirrorDetail": {
+        "anaconda": {
+            "icon": "icon-anaconda",
+            "fill": "#3faf4b"
+        },
+        "archlinux": {
+            "icon": "icon-archlinux",
+            "help": "archlinux-mirror-howto",
+            "fill": "#1793d1"
+        },
+        "archlinuxcn": {
+            "icon": "icon-archlinux",
+            "help": "archlinuxcn-mirror-howto",
+            "fill": "#1793d1"
+        },
+        "centos": {
+            "icon": "icon-centos",
+            "help": "centos-mirror-howto",
+            "fill": "#95267c"
+        },
+        "debian": {
+            "icon": "icon-debian",
+            "help": "debian-mirror-howto",
+            "fill": "#d70751"
+        },
+        "debian-security": {
+            "icon": "icon-debian",
+            "help": "debian-mirror-howto",
+            "fill": "#d70751"
+        },
+        "debian-cd": {
+            "icon": "icon-debian",
+            "help": "debian-mirror-howto?id=debian-本体",
+            "fill": "#d70751"
+        },
+        "deepin-cd": {
+            "icon": "icon-deepin",
+            "help": "deepin-mirror-howto",
+            "fill": "#31bff7"
+        },
+        "deepin": {
+            "icon": "icon-deepin",
+            "help": "deepin-mirror-howto",
+            "fill": "#31bff7"
+        },
+        "epel": {
+            "icon": "icon-epel",
+            "help": "epel-mirror-howto",
+            "fill": "#d70751"
+        },
+        "elrepo": {
+            "help": "elrepo-mirror-howto"
+        },
+        "kali": {
+            "icon": "icon-kali",
+            "help": "kali-mirror-howto",
+            "fill": "#4f7992"
+        },
+        "kali-images": {
+            "icon": "icon-kali",
+            "help": "kali-mirror-howto",
+            "fill": "#4f7992"
+        },
+        "lxc-images": {
+            "icon": "icon-ziyuan",
+            "fill": "#313131"
+        },
+        "ubuntu": {
+            "icon": "icon-ubuntu",
+            "help": "ubuntu-mirror-howto",
+            "fill": "#d64613"
+        },
+        "ubuntu-releases": {
+            "icon": "icon-ubuntu",
+            "help": "ubuntu-mirror-howto",
+            "fill": "#d64613"
+        },
+        "raspberrypi": {
+            "icon": "icon-raspberrypi",
+            "fill": "#b61040"
+        },
+        "npm":{
+            "icon": "icon-npm",
+            "help": "npm-mirror-howto",
+            "fill": "#c00714"
+        },
+        "pypi":{
+            "icon": "icon-pypi",
+            "help": "pypi-mirror-howto",
+            "fill": "#4277a6"
+        },
+        "alpine":{
+            "icon": "icon-alpine"
+        },
+        "openwrt":{
+            "icon": "icon-openwrt"
+        },
+        "proxmox":{
+            "icon": "icon-proxmox"
+        },
+        "homebrew":{
+            "icon": "icon-homebrew",
+            "help": "homebrew-mirror-howto"
+        },
+        "homebrew-bottles":{
+            "icon": "icon-homebrew-bottles"
+        },
+        "ubuntu-ports":{
+            "icon": "icon-ubuntu"
+        },
+        "ubuntukylin":{
+            "icon": "icon-ubuntukylin"
+        },
+        "centos-altarch":{
+            "icon": "icon-centos"
+        },
+        "aosp-monthly":{
+            "icon": "icon-aosp"
+        },
+        "docker-ce":{
+            "icon": "icon-docker"
+        },
+        "manjaro-cd": {
+            "icon": "icon-manjaro"
+        },
+        "dockerhub": {
+            "icon": "icon-docker",
+            "help": "dockerhub-mirror-howto"
+        }
+    }
+}
