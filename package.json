@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit --skipLibCheck && vite build",
+    "only-build": "vite build",
     "serve": "vite preview",
     "commit": "git-cz"
   },
