@@ -104,7 +104,7 @@ export default {
       window.location.href = this.genSourceUrl()
     },
     jumpHelpUrl: function () {
-      window.location.href = `${window.location.origin}/docs/#/${this.type == 1 ? 'mirror' : 'proxy'}/${
+      window.location.href = `${window.location.origin}/docs/#/${this.type === 1 ? 'mirror' : 'proxy'}/${
         this.infoMap[this.name]['help']
       }`
     },

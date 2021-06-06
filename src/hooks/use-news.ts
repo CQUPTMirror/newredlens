@@ -1,6 +1,11 @@
 import { onMounted, Ref, ref } from 'vue'
 import axios from 'axios'
 
+interface News {
+  title: string
+  content: string
+}
+
 export function useNews () {
   // const news = ref('公告加载中...')
   // const newsDetail = ref('详细内容')
@@ -9,9 +14,9 @@ export function useNews () {
   //   newsModal.value = visible
   // }
   // return { news, newsDetail, newsModal, setModalVisible }
-  const news: Ref<{ title: string, content: string }[]> = ref([])
+  const news: Ref<News[]> = ref([])
   onMounted(async () => {
-    const res = await axios.get(`https://raw.githubusercontent.com/CQUPTMirror/MirrorsNews/master/News.json`)
+    const res = await axios.get(`/static/news.json`)
     news.value = res.data
   })
   const newsContent = ref('详细内容')

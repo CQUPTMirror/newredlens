@@ -9,7 +9,7 @@
         type="primary"
         @click="closeModal">OK</a-button>
     </template>
-    <p>{{ newsContent }}</p>
+    <div v-html="newsContent" />
   </a-modal>
   <div class="sidebar">
     <div id="search">
@@ -78,7 +78,6 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, ref } from 'vue'
-import { info } from '@/views/sidebar/IsoInfo.data'
 import { useIsoModal } from '@/hooks/use-iso-modal'
 import axios from 'axios'
 import { useNews } from '@/hooks/use-news'
@@ -93,7 +92,7 @@ export default defineComponent({
   },
   emits: ['update:mirrorQ'],
   setup (props, context) {
-    const { modalVisible, categoryActiveKey, itemActiveKey, handleOk } = useIsoModal()
+    const { info, modalVisible, categoryActiveKey, itemActiveKey, handleOk } = useIsoModal()
     const { news, newsModal, newsContent, openModal, closeModal } = useNews()
     const q = computed({
       get () {

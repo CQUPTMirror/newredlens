@@ -4,7 +4,6 @@
       <Header />
     </header>
     <div class="main-wrapper">
-      <!--<IsoInfo />-->
       <MirrorList />
     </div>
     <Footer />
@@ -43,8 +42,7 @@ body {
   background-color: $main-bg;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  height: 100vh;
+  text-align: left;
 }
 body,
 h2,
