@@ -37,6 +37,7 @@ body {
 }
 #app {
   display: flex;
+  height: 100vh;
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   background-color: $main-bg;
@@ -55,6 +56,7 @@ a {
 .main-wrapper {
   padding: 24px 96px;
   flex: 1;
+  background-color: #f3f4fa;
 }
 .iconfont {
   filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(3250%) hue-rotate(251deg) brightness(89%) contrast(97%);

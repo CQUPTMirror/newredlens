@@ -6,7 +6,7 @@
     <a
       class="btn"
       target="_blank"
-      href="https://mirrors.cqupt.edu.cn/status.html">系统状态</a>
+      href="/status.html">系统状态</a>
     <a class="btn" href="docs/">使用帮助</a>
   </div>
 </template>
