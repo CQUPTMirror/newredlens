@@ -9,11 +9,11 @@ const routes = [
     path: '/:catchAll(.*)',
     redirect: '/'
   },
-//   {
-//     path: '/isoinfo',
-//     name: 'isoinfo',
-//     component: () => import('@/views/IsoInfo.vue')
-//   },
+  //   {
+  //     path: '/isoinfo',
+  //     name: 'isoinfo',
+  //     component: () => import('@/views/IsoInfo.vue')
+  //   },
   {
     path: '/',
     name: 'home',
