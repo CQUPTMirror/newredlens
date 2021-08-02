@@ -85,16 +85,55 @@ a {
 
 @media (prefers-color-scheme: dark) {
   body,
-  h2,
+  h1, h2, h3, h4, h5, h6,
   a {
-    color: $main-font-dark;
+    color: $main-font-dark !important;
+  }
+  .ant-input {
+    background-color: $float-bg-dark !important;
+    color: $main-font-dark !important;
+    border: 1px solid $main-border-dark !important;
   }
   .iconfont {
     filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%)
   }
   body,
-  #app {
+  #app,
+  .main-wrapper,
+  .footer-wrapper {
     background-color: $main-bg-dark;
   }
+  .mirror-card {
+    color: $main-font-dark;
+  }
+
+  // "获取镜像" popup start
+  .ant-modal-content {
+    background-color: $main-bg-dark !important;
+    color: $main-font-dark !important;
+  }
+  .ant-modal-header,
+  .ant-tabs-nav-scroll,
+  .ant-modal-footer {
+    background-color: $main-bg-dark !important;
+    border-color: $main-border-dark !important;
+  }
+  .ant-tabs-nav-scroll .ant-tabs-tab {
+    background-color: $main-bg-dark !important;
+    color: $main-font-dark !important;
+    border: none !important;
+  }
+  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
+    border-bottom: 1px solid #fff !important;
+  }
+  .ant-tabs .ant-tabs-left-content {
+    border-left: none !important;
+  }
+  .ant-modal-title,
+  .ant-modal-close,
+  .ant-tabs-tabpane {
+    color: $main-font-dark !important;
+  }
+  // "获取镜像" popup end
 }
 </style>
