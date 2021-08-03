@@ -60,7 +60,7 @@ export default defineComponent({
   },
   computed: {
     mirrorDataFilter () {
-      return (this.mirrorData as MirrorItem[]).filter(
+      return (this.mirrorData as MirrorItem[]).sort((a, b) => a.name === b.name ? 0 : (a.name > b.name ? 1 : -1)).filter(
         value => value.is_master && value.status !== 'paused' && value.name.includes(this.mirrorQ)
       )
     }
