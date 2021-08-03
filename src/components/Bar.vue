@@ -27,6 +27,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../assets/theme/normal.scss";
 .bar-wrapper {
+  text-align: center;
   .btn {
     font-size: 16px;
     margin: 0 5px;
@@ -39,6 +40,7 @@ export default defineComponent({
       transition: all 0.2s;
       color: $accent;
     }
+    display: inline-block;
   }
 }
 
