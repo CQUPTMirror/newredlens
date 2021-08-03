@@ -78,6 +78,7 @@ export default {
     status: String,
     size: String,
     name: String,
+    url: String,
     isShrinked: Boolean
   },
   data () {
@@ -98,7 +99,7 @@ export default {
   },
   methods: {
     genSourceUrl: function () {
-      return `${window.location.href}${this.name}/`
+      return this.url || `${window.location.href}${this.name}/`
     },
     openSourceUrl: function () {
       window.location.href = this.genSourceUrl()

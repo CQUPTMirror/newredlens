@@ -15,15 +15,17 @@
             :last-update="item.last_update"
             :status="item.status"
             :size="item.size"
+            :url="item.url"
             :is-shrinked="isShrinked" />
         </div>
         <div v-else class="mirror-container">
           <MirrorCard
-            v-for="item in proxyData"
+            v-for="item in proxyDataFilter"
             :key="item.value"
             class="mirror-card"
             :type="choice"
             :name="item.name"
+            :url="item.url"
             :upstream="item.upstream" />
         </div>
       </div>
@@ -43,6 +45,8 @@ import { defineComponent } from 'vue'
 import RightSideBar from '@/views/sidebar/RightSideBar.vue'
 import { MirrorItem } from '@/types/MirrorItem'
 
+const compareByName = (a: MirrorItem, b: MirrorItem) => a.name === b.name ? 0 : (a.name > b.name ? 1 : -1)
+
 export default defineComponent({
   name: 'MirrorList',
   components: {
@@ -60,9 +64,12 @@ export default defineComponent({
   },
   computed: {
     mirrorDataFilter () {
-      return (this.mirrorData as MirrorItem[]).sort((a, b) => a.name === b.name ? 0 : (a.name > b.name ? 1 : -1)).filter(
+      return (this.mirrorData as MirrorItem[]).sort(compareByName).filter(
         value => value.is_master && value.status !== 'paused' && value.name.includes(this.mirrorQ)
       )
+    },
+    proxyDataFilter () {
+      return (this.proxyData as MirrorItem[]).sort(compareByName)
     }
   },
   created () {
@@ -107,7 +114,8 @@ export default defineComponent({
       .catch(err => {
         console.log(err)
         this.proxyData = [
-          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' }
+          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' },
+          { 'name': 'AUR', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://aur.archlinux.org', 'size': '7.17T', 'url': 'https://aur.redrock.team' }
         ]
       })
       .then(resp => {
