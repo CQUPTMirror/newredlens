@@ -41,6 +41,7 @@
 import MirrorCard from './MirrorCard.vue'
 import { defineComponent } from 'vue'
 import RightSideBar from '@/views/sidebar/RightSideBar.vue'
+import { MirrorItem } from '@/types/MirrorItem'
 
 export default defineComponent({
   name: 'MirrorList',
@@ -59,7 +60,7 @@ export default defineComponent({
   },
   computed: {
     mirrorDataFilter () {
-      return this.mirrorData.filter(
+      return (this.mirrorData as MirrorItem[]).filter(
         value => value.is_master && value.status !== 'paused' && value.name.includes(this.mirrorQ)
       )
     }
@@ -92,7 +93,7 @@ export default defineComponent({
         ]
       })
       .then(resp => {
-        this.mirrorData = resp.data
+        this.mirrorData = (resp.data as MirrorItem[])
       })
 
     this.$axios
