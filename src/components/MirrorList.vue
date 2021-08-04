@@ -163,10 +163,4 @@ export default defineComponent({
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .mirror-card {
-    background-color: $float-bg-dark;
-  }
-}
-
 </style>

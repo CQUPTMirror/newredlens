@@ -33,7 +33,7 @@ export default defineComponent({
 @import 'assets/theme/normal.scss';
 body {
   margin: 0;
-  background-color: $main-bg;
+  background-color: $main-bg !important;
 }
 #app {
   display: flex;
@@ -56,7 +56,7 @@ a {
 .main-wrapper {
   padding: 24px 96px;
   flex: 1;
-  background-color: #f3f4fa;
+  background-color: $main-bg;
 }
 .iconfont {
   filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(3250%) hue-rotate(251deg) brightness(89%) contrast(97%);
@@ -84,6 +84,9 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
+  body {
+    background-color: $main-bg-dark !important;
+  }
   body,
   h1, h2, h3, h4, h5, h6,
   a {
@@ -97,14 +100,10 @@ a {
   .iconfont {
     filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%)
   }
-  body,
   #app,
   .main-wrapper,
   .footer-wrapper {
     background-color: $main-bg-dark;
-  }
-  .mirror-card {
-    color: $main-font-dark;
   }
 
   // "获取镜像" popup start
@@ -124,7 +123,7 @@ a {
     border: none !important;
   }
   .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
-    border-bottom: 1px solid #fff !important;
+    border-bottom: 1px solid #1890ff !important;
   }
   .ant-tabs .ant-tabs-left-content {
     border-left: none !important;

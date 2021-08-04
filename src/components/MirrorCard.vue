@@ -118,7 +118,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '../assets/theme/normal.scss';
 @keyframes rotating {
   from {
     transform: rotate(0deg);
@@ -257,6 +257,12 @@ export default {
     opacity: 0;
     z-index: 1;
     right: 0;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .mirror-card {
+    background-color: $float-bg-dark !important;
+    color: $main-font-dark;
   }
 }
 </style>
