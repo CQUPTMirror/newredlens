@@ -143,6 +143,13 @@ export default defineComponent({
   border: none;
   height: 144px;
   box-sizing: border-box;
+  @media (prefers-color-scheme: dark) {
+    background-color: $float-bg-dark;
+    color: $main-font-dark;
+  }
+  @media (min-width: 991px) and (max-width: 1280px) {
+    height: 108px;
+  }
 }
 .mirror-container {
   display: grid;

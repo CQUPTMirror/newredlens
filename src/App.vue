@@ -1,13 +1,11 @@
 <template>
-  <div id="app">
-    <header id="header">
-      <Header />
-    </header>
-    <div class="main-wrapper">
-      <MirrorList />
-    </div>
-    <Footer />
+  <header id="header">
+    <Header />
+  </header>
+  <div class="main-wrapper">
+    <MirrorList />
   </div>
+  <Footer />
 </template>
 
 <script lang="ts">
