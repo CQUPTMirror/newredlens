@@ -7,7 +7,9 @@
       <a-button
         key="submit"
         type="primary"
-        @click="closeModal">OK</a-button>
+        @click="closeModal">
+        OK
+      </a-button>
     </template>
     <div v-html="newsContent" />
   </a-modal>
@@ -38,8 +40,8 @@
     </div>
     <div class="report">
       <a href="https://github.com/CQUPTMirror/Report" style="text-decoration-line: none;"><h3 style="font-weight: bolder;">反馈建议</h3></a>
-      <p>Bug或申请开新的镜像请提issue</p>
-      <p><a href="https://github.com/CQUPTMirror/Report/issues/new">提交issue</a></p>
+      <p>Bug 或申请开新的镜像请提 issue</p>
+      <p><a href="https://github.com/CQUPTMirror/Report/issues/new">提交 issue</a></p>
     </div>
     <a-modal
       v-model:visible="modalVisible"
@@ -50,7 +52,9 @@
         <a-button
           key="submit"
           type="primary"
-          @click="handleOk">OK</a-button>
+          @click="handleOk">
+          OK
+        </a-button>
       </template>
       <a-tabs v-model:activeKey="categoryActiveKey" type="card">
         <a-tab-pane
@@ -68,12 +72,12 @@
               <ul>
                 <li v-for="url in info[category][item]" :key="url.name"><a :href="url.url">{{ url.name }}</a></li>
               </ul>
-              <!--{{ info[category][item] }}-->
             </a-tab-pane>
           </a-tabs>
         </a-tab-pane>
       </a-tabs>
-    </a-modal></div>
+    </a-modal>
+  </div>
 </template>
 
 <script lang="ts">
@@ -108,8 +112,6 @@ export default defineComponent({
       categoryActiveKey,
       itemActiveKey,
       handleOk,
-      // news,
-      // newsDetail,
       newsContent,
       news,
       newsModal,

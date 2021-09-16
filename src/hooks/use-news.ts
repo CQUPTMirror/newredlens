@@ -7,13 +7,6 @@ interface News {
 }
 
 export function useNews () {
-  // const news = ref('公告加载中...')
-  // const newsDetail = ref('详细内容')
-  // const newsModal = ref(false)
-  // const setModalVisible = (visible: boolean) => {
-  //   newsModal.value = visible
-  // }
-  // return { news, newsDetail, newsModal, setModalVisible }
   const news: Ref<News[]> = ref([])
   onMounted(async () => {
     const res = await axios.get(`/static/news.json`)

@@ -61,30 +61,6 @@ service.interceptors.response.use(
       return Promise.reject(err)
     })
   }
-  // res => {
-  //   const { code, message } = res.data
-  //   if (code === 401) {
-  //     redirectLogin()
-  //   }
-  //   if (code !== 200) {
-  //     Message.warning(`${message}`)
-  //     return Promise.reject(res.data)
-  //   } else {
-  //     return res.data
-  //   }
-  // },
-  // error => {
-  //   if (error.response.status === 401) {
-  //     redirectLogin()
-  //   } else {
-  //     Message({
-  //       showClose: true,
-  //       type: 'warning',
-  //       message: error.message
-  //     })
-  //   }
-  //   return Promise.reject(error)
-  // }
 )
 
 export default service

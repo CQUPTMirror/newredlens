@@ -15,7 +15,6 @@ import { defineComponent } from 'vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import MirrorList from '@/components/MirrorList.vue'
-// import IsoInfo from '@/views/IsoInfo.vue'
 
 export default defineComponent({
   name: 'App',
@@ -86,7 +85,12 @@ a {
     background-color: $main-bg-dark !important;
   }
   body,
-  h1, h2, h3, h4, h5, h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   a {
     color: $main-font-dark !important;
   }
@@ -96,7 +100,7 @@ a {
     border: 1px solid $main-border-dark !important;
   }
   .iconfont {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%)
+    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%);
   }
   #app,
   .main-wrapper,

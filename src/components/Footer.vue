@@ -7,7 +7,6 @@
         <span>提供支持，<br>由</span>
         <a class="xxbnb" href="https://redrock.team">红岩网校工作站运维安全部/CQUPT-LUG</a>
         <span>维护。</span>
-        <!-- <img class="logo" src="../assets/lug-logo.svg" alt="CQUPT-LUG" /> -->
         <svg class="iconfont logo">
           <use xlink:href="#icon-lug-logo" />
         </svg>
