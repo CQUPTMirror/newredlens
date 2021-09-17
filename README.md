@@ -12,9 +12,33 @@ git tag -a "v1.XX" $COMMIT_ID
 git push --tag
 ```
 
+## Installing / Getting started
+
+
+```
+yarn 
+```
+
+
+## Developing
+```
+yarn run dev / vite
+```
+or if you need:
+
+
+```
+yarn only-build (Temporary solution）
+```
+
+```
+yarn run serve
+```
+Please refer to `package.json`  if you want to learn more
+
+
 ## Links
 [How-to](https://github.com/CQUPTMirror/cqupt-mirrors-howto)
 
 [Report](https://github.com/CQUPTMirror/Report)
 
-[News](https://github.com/CQUPTMirror/MirrorsNews)

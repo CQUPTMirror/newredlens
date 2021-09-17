@@ -4,6 +4,7 @@
       <p>
         <span>本开源镜像源由</span>
         <a class="xxbnb" href="http://xxb.cqupt.edu.cn">重庆邮电大学信息与网络管理中心</a>
+        <!--信息办牛逼-->
         <span>提供支持，<br>由</span>
         <a class="xxbnb" href="https://redrock.team">红岩网校工作站运维安全部/CQUPT-LUG</a>
         <span>维护。</span>

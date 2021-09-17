@@ -119,6 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/theme/normal.scss';
+
 @keyframes rotating {
   from {
     transform: rotate(0deg);
@@ -142,11 +143,13 @@ export default {
   .update {
     transform: translateY(10px);
     opacity: 0;
-    transform-style: ease-in;
+    transform-style: flat;
     transition-duration: 0.4s;
+
     @media screen and (min-width: 991px) and (max-width: 1280px) {
       font-size: 1vw;
     }
+
     @media screen and (max-width: 576px) {
       font-size: 1vw;
       line-height: 7pt;
@@ -221,6 +224,7 @@ export default {
     @media (max-width: 576px) {
       display: none;
     }
+
     @media screen and (min-width: 991px) and (max-width: 1280px) {
       display: none;
     }
@@ -233,8 +237,9 @@ export default {
     height: 64px;
     border-radius: 50%;
     margin-right: 24px;
+
     @media screen and (min-width: 991px) and (max-width: 1280px) {
-      /*display: none;*/
+      /* display: none; */
       width: 24px;
       height: 24px;
       margin-right: 8px;
