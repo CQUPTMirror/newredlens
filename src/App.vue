@@ -1,140 +1,62 @@
 <template>
-  <header id="header">
-    <Header />
-  </header>
-  <div class="main-wrapper">
-    <MirrorList />
+  <div style="height: 100%; position: relative;">
+    <n-config-provider :theme="theme">
+      <n-global-style />
+      <n-layout position="absolute" :native-scrollbar="false">
+        <n-layout-header style="height: 170px; padding: 24px;"><Header /></n-layout-header>
+        <n-layout content-style="padding: 24px;">
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+          <n-h2>平山道</n-h2>
+        </n-layout><!--      &lt;!&ndash;      <n-layout-content content-style="padding: 24px;"><Content /></n-layout-content>&ndash;&gt;-->
+        <n-layout-footer
+          position="absolute"
+          style="height: 170px; padding: 24px;"><Footer /></n-layout-footer>
+      </n-layout></n-config-provider>
   </div>
-  <Footer />
 </template>
-
 <script lang="ts">
-import '@/assets/theme/normal.scss'
 
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useOsTheme, darkTheme } from 'naive-ui'
 import Header from '@/components/Header.vue'
+// import Content from '@/components/Content/index.vue'
 import Footer from '@/components/Footer.vue'
-import MirrorList from '@/components/MirrorList.vue'
 
 export default defineComponent({
-  name: 'App',
   components: {
     Header,
-    Footer,
-    MirrorList
+    Footer
+  },
+  setup () {
+    const osThemeRef = useOsTheme()
+    return {
+      theme: computed(() => (osThemeRef.value === 'dark' ? darkTheme : null)),
+      osTheme: osThemeRef
+    }
   }
+
 })
 </script>
 
 <style lang="scss">
-@import 'assets/theme/normal.scss';
-body {
-  margin: 0;
-  background-color: $main-bg !important;
-}
 #app {
   display: flex;
   height: 100vh;
   flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-color: $main-bg;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: left;
 }
-body,
-h2,
-a {
-  color: $main-font;
-}
-#header {
-  padding: 36px 96px 24px 96px;
-}
-.main-wrapper {
-  padding: 24px 96px;
-  flex: 1;
-  background-color: $main-bg;
-}
-.iconfont {
-  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(3250%) hue-rotate(251deg) brightness(89%) contrast(97%);
-}
 
-@media screen and (max-width: 1200px) {
-  .main-wrapper {
-    padding: 24px 24px;
-  }
-  #header {
-    padding: 36px 24px 24px 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  #header {
-    padding: 36px 24px 0 24px;
-  }
-}
-
-@media (max-width: 375px) {
-  .main-wrapper {
-    padding: 24px 0;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $main-bg-dark !important;
-  }
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a {
-    color: $main-font-dark !important;
-  }
-  .ant-input {
-    background-color: $float-bg-dark !important;
-    color: $main-font-dark !important;
-    border: 1px solid $main-border-dark !important;
-  }
-  .iconfont {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%);
-  }
-  #app,
-  .main-wrapper,
-  .footer-wrapper {
-    background-color: $main-bg-dark;
-  }
-
-  // "获取镜像" popup start
-  .ant-modal-content {
-    background-color: $main-bg-dark !important;
-    color: $main-font-dark !important;
-  }
-  .ant-modal-header,
-  .ant-tabs-nav-scroll,
-  .ant-modal-footer {
-    background-color: $main-bg-dark !important;
-    border-color: $main-border-dark !important;
-  }
-  .ant-tabs-nav-scroll .ant-tabs-tab {
-    background-color: $main-bg-dark !important;
-    color: $main-font-dark !important;
-    border: none !important;
-  }
-  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
-    border-bottom: 1px solid #1890ff !important;
-  }
-  .ant-tabs .ant-tabs-left-content {
-    border-left: none !important;
-  }
-  .ant-modal-title,
-  .ant-modal-close,
-  .ant-tabs-tabpane {
-    color: $main-font-dark !important;
-  }
-  // "获取镜像" popup end
-}
 </style>

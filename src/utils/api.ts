@@ -1,7 +1,6 @@
 import axios from 'axios'
 import config from './config'
 import Cookies from 'js-cookie'
-import { ElMessage } from 'element-plus'
 import { redirectLogin, refreshTokenException } from './auth'
 
 const service = axios.create(config)
@@ -53,11 +52,6 @@ service.interceptors.response.use(
           return resolve(previousRes)
         }
       }
-      ElMessage({
-        showClose: true,
-        type: 'warning',
-        message: error.message
-      })
       return Promise.reject(err)
     })
   }
