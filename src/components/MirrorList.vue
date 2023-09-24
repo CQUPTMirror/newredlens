@@ -80,7 +80,7 @@ export default defineComponent({
           process.env.NODE_ENV === 'production'
             ? window.location.origin
             : baseURL
-        }/static/tunasync.json`
+        }/mirrors`
       )
       .catch(err => {
         console.log(err)
