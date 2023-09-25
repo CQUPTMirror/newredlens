@@ -1,17 +1,26 @@
 /* eslint-disable camelcase */
 export type MirrorItem = {
-    name: string,
-    is_master?: boolean,
+    id: string,
+    alias: string,
     status?: string,
-    last_update?: string,
-    last_update_ts?: number,
-    last_started?: string,
-    last_started_ts?: number,
-    last_ended?: string,
-    last_ended_ts?: number,
-    next_schedule?: string,
-    next_schedule_ts?: number,
+    lastUpdate?: number,
+    lastStarted?: number,
+    lastEnded?: number,
+    nextSchedule?: number,
     upstream?: string,
     size?: string,
-    url?: string
+    url?: string,
+    type: 'mirror' | 'proxy',
+    errorMsg?: string,
+    lastOnline?: number,
+    lastRegister?: number
+}
+
+export type MirrorViewItem = MirrorItem & {
+    lastUpdateTimeString?: string,
+    lastStartedTimeString?: string,
+    lastEndedTimeString?: string,
+    nextScheduleTimeString?: string,
+    lastOnlineTimeString?: string,
+    lastRegisterTimeString?: string
 }

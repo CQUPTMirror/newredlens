@@ -8,11 +8,11 @@
         <div v-if="choice===1" class="mirror-container">
           <MirrorCard
             v-for="item in mirrorDataFilter"
-            :key="item.value"
+            :key="item.id"
             class="mirror-card"
             :type="choice"
-            :name="item.name"
-            :last-update="item.last_update"
+            :name="item.alias"
+            :last-update="item.lastUpdateTimeString"
             :status="item.status"
             :size="item.size"
             :url="item.url"
@@ -21,10 +21,10 @@
         <div v-else class="mirror-container">
           <MirrorCard
             v-for="item in proxyDataFilter"
-            :key="item.value"
+            :key="item.id"
             class="mirror-card"
             :type="choice"
-            :name="item.name"
+            :name="item.alias"
             :url="item.url"
             :upstream="item.upstream" />
         </div>
@@ -43,9 +43,10 @@
 import { defineComponent } from 'vue'
 import MirrorCard from './MirrorCard.vue'
 import RightSideBar from '@/views/sidebar/RightSideBar.vue'
-import { MirrorItem } from '@/types/MirrorItem'
+import { MirrorItem, MirrorViewItem } from '@/types/MirrorItem'
+import { mirrorViewShim } from '@/utils/shims'
 
-const compareByName = (a: MirrorItem, b: MirrorItem) => a.name === b.name ? 0 : (a.name > b.name ? 1 : -1)
+const compareByName = (a: MirrorViewItem, b: MirrorViewItem) => a.alias === b.alias ? 0 : (a.alias > b.alias ? 1 : -1)
 
 export default defineComponent({
   name: 'MirrorList',
@@ -64,62 +65,30 @@ export default defineComponent({
   },
   computed: {
     mirrorDataFilter () {
-      return (this.mirrorData as MirrorItem[]).sort(compareByName).filter(
-        value => value.is_master && value.status !== 'paused' && value.name.includes(this.mirrorQ)
+      return (this.mirrorData as MirrorViewItem[]).sort(compareByName).filter(
+        value => value.status !== 'paused' && value.alias.includes(this.mirrorQ)
       )
     },
     proxyDataFilter () {
-      return (this.proxyData as MirrorItem[]).sort(compareByName)
+      return (this.proxyData as MirrorViewItem[]).sort(compareByName)
     }
   },
   created () {
-    let baseURL = 'http://mirror.cqupt.edu.cn'
+    let baseURL = 'https://mirrors.cqupt.edu.cn'
     this.$axios
       .get(
         `${
           process.env.NODE_ENV === 'production'
             ? window.location.origin
             : baseURL
-        }/mirrors`
+        }/api/mirrors`
       )
       .catch(err => {
         console.log(err)
-        this.mirrorData = [
-          { 'name': 'deepin-cd', 'is_master': true, 'status': 'success', 'last_update': '2020-07-22 01:15:17 +0800', 'last_update_ts': 1595351717, 'last_started': '2020-07-21 22:09:24 +0800', 'last_started_ts': 1595340564, 'last_ended': '2020-07-22 01:15:17 +0800', 'last_ended_ts': 1595351717, 'next_schedule': '2020-07-22 07:15:17 +0800', 'next_schedule_ts': 1595373317, 'upstream': 'rsync://archive.ubuntu.com/ubuntu/', 'size': '1.41T' },
-          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' },
-          { 'name': 'centos', 'is_master': true, 'status': 'success', 'last_update': '2020-07-21 23:51:03 +0800', 'last_update_ts': 1595346663, 'last_started': '2020-07-21 23:39:39 +0800', 'last_started_ts': 1595345979, 'last_ended': '2020-07-21 23:51:03 +0800', 'last_ended_ts': 1595346663, 'next_schedule': '2020-07-22 05:51:03 +0800', 'next_schedule_ts': 1595368263, 'upstream': 'rsync://msync.centos.org/CentOS/', 'size': '300G' },
-          { 'name': 'ubuntuttttttttttt-ttttttttttest', 'is_master': true, 'status': 'success', 'last_update': '2020-07-22 01:15:17 +0800', 'last_update_ts': 1595351717, 'last_started': '2020-07-21 22:09:24 +0800', 'last_started_ts': 1595340564, 'last_ended': '2020-07-22 01:15:17 +0800', 'last_ended_ts': 1595351717, 'next_schedule': '2020-07-22 07:15:17 +0800', 'next_schedule_ts': 1595373317, 'upstream': 'rsync://archive.ubuntu.com/ubuntu/', 'size': '1.41T' },
-          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' },
-          { 'name': 'centos', 'is_master': true, 'status': 'success', 'last_update': '2020-07-21 23:51:03 +0800', 'last_update_ts': 1595346663, 'last_started': '2020-07-21 23:39:39 +0800', 'last_started_ts': 1595345979, 'last_ended': '2020-07-21 23:51:03 +0800', 'last_ended_ts': 1595346663, 'next_schedule': '2020-07-22 05:51:03 +0800', 'next_schedule_ts': 1595368263, 'upstream': 'rsync://msync.centos.org/CentOS/', 'size': '300G' },
-          { 'name': 'ubuntuttttttttttt-ttttttttttest', 'is_master': true, 'status': 'success', 'last_update': '2020-07-22 01:15:17 +0800', 'last_update_ts': 1595351717, 'last_started': '2020-07-21 22:09:24 +0800', 'last_started_ts': 1595340564, 'last_ended': '2020-07-22 01:15:17 +0800', 'last_ended_ts': 1595351717, 'next_schedule': '2020-07-22 07:15:17 +0800', 'next_schedule_ts': 1595373317, 'upstream': 'rsync://archive.ubuntu.com/ubuntu/', 'size': '1.41T' },
-          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' },
-          { 'name': 'centos', 'is_master': true, 'status': 'success', 'last_update': '2020-07-21 23:51:03 +0800', 'last_update_ts': 1595346663, 'last_started': '2020-07-21 23:39:39 +0800', 'last_started_ts': 1595345979, 'last_ended': '2020-07-21 23:51:03 +0800', 'last_ended_ts': 1595346663, 'next_schedule': '2020-07-22 05:51:03 +0800', 'next_schedule_ts': 1595368263, 'upstream': 'rsync://msync.centos.org/CentOS/', 'size': '300G' },
-          { 'name': 'ubuntuttttttttttt-ttttttttttest', 'is_master': true, 'status': 'success', 'last_update': '2020-07-22 01:15:17 +0800', 'last_update_ts': 1595351717, 'last_started': '2020-07-21 22:09:24 +0800', 'last_started_ts': 1595340564, 'last_ended': '2020-07-22 01:15:17 +0800', 'last_ended_ts': 1595351717, 'next_schedule': '2020-07-22 07:15:17 +0800', 'next_schedule_ts': 1595373317, 'upstream': 'rsync://archive.ubuntu.com/ubuntu/', 'size': '1.41T' },
-          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' },
-          { 'name': 'centos', 'is_master': true, 'status': 'success', 'last_update': '2020-07-21 23:51:03 +0800', 'last_update_ts': 1595346663, 'last_started': '2020-07-21 23:39:39 +0800', 'last_started_ts': 1595345979, 'last_ended': '2020-07-21 23:51:03 +0800', 'last_ended_ts': 1595346663, 'next_schedule': '2020-07-22 05:51:03 +0800', 'next_schedule_ts': 1595368263, 'upstream': 'rsync://msync.centos.org/CentOS/', 'size': '300G' }
-        ]
       })
       .then(resp => {
-        this.mirrorData = (resp.data as MirrorItem[])
-      })
-
-    this.$axios
-      .get(
-        `${
-          process.env.NODE_ENV === 'production'
-            ? window.location.origin
-            : baseURL
-        }/static/proxies.json`
-      )
-      .catch(err => {
-        console.log(err)
-        this.proxyData = [
-          { 'name': 'pypi', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://pypi.python.org/', 'size': '7.17T' },
-          { 'name': 'AUR', 'is_master': true, 'status': 'syncing', 'last_update': '2020-07-21 19:06:25 +0800', 'last_update_ts': 1595329585, 'last_started': '2020-07-21 19:11:29 +0800', 'last_started_ts': 1595329889, 'last_ended': '2020-07-21 19:06:25 +0800', 'last_ended_ts': 1595329585, 'next_schedule': '0001-01-01 00:00:00 +0000', 'next_schedule_ts': -62135596800, 'upstream': 'https://aur.archlinux.org', 'size': '7.17T', 'url': 'https://aur.redrock.team' }
-        ]
-      })
-      .then(resp => {
-        this.proxyData = resp.data
+        this.mirrorData = (resp.data as MirrorItem[]).filter(item => item.type === 'mirror').map(mirrorViewShim)
+        this.proxyData = (resp.data as MirrorItem[]).filter(item => item.type === 'proxy').map(mirrorViewShim)
       })
     window.addEventListener('resize', this.onResize)
   },
