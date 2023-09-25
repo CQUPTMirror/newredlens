@@ -74,14 +74,9 @@ export default defineComponent({
     }
   },
   created () {
-    let baseURL = 'https://mirrors.cqupt.edu.cn'
     this.$axios
       .get(
-        `${
-          process.env.NODE_ENV === 'production'
-            ? window.location.origin
-            : baseURL
-        }/api/mirrors`
+        '/api/mirrors'
       )
       .catch(err => {
         console.log(err)
