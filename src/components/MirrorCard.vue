@@ -9,7 +9,7 @@
         <svg
           class="iconfont"
           :style="isMouseOver?{filter:'unset'}:{}">
-          <use :xlink:href="infoMapAfter[name]['icon']?'#'+infoMapAfter[name]['icon']:type?'#icon-mirror':'#icon-proxy'" />
+          <use :xlink:href="(infoMapAfter[name ?? '']?.icon)?'#'+ (infoMapAfter[name ?? '']?.icon) :type?'#icon-mirror':'#icon-proxy'" />
         </svg>
       </div>
       <div class="detail-left">
@@ -30,7 +30,7 @@
       <span v-if="size!=='unknown'" class="size-num">{{ size }}</span>
       <span v-else class="size-num" />
       <svg
-        v-if="infoMap[name]['help']!==undefined"
+        v-if="infoMap[name ?? '']?.help!==undefined"
         id="i-howto"
         class="iconfont icon-i"
         @click.stop="jumpHelpUrl">
