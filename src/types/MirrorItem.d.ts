@@ -3,6 +3,7 @@ export type MirrorItem = {
     id: string,
     alias: string,
     status?: string,
+    desc?: string,
     lastUpdate?: number,
     lastStarted?: number,
     lastEnded?: number,
