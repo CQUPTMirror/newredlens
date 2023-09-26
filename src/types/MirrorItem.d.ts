@@ -2,7 +2,7 @@
 export type MirrorItem = {
     id: string,
     alias: string,
-    status?: 'success' | 'failed' | 'paused' | 'syncing' | 'disabled',
+    status: 'none' | 'failed' | 'success' | 'syncing' | 'pre-syncing' | 'paused' | 'disabled' | 'cached',
     desc?: string,
     lastUpdate?: number,
     lastStarted?: number,
