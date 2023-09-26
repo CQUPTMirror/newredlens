@@ -60,17 +60,17 @@
         <a-tab-pane
           v-for="category in Object.getOwnPropertyNames(info)"
           :key="category"
-          :tab="category">
+          :tab="{os: '操作系统', app: '应用程序'}[category]">
           <a-tabs
             v-model:activeKey="itemActiveKey"
             tab-position="left">
             <a-tab-pane
               v-for="item in Object.getOwnPropertyNames(info[category])"
               :key="item"
-              :tab="item">
-              <h2>{{ item }}</h2>
+              :tab="info[category][item].alias">
+              <h2>{{ info[category][item].alias }}</h2>
               <ul>
-                <li v-for="url in info[category][item]" :key="url.name"><a :href="url.url">{{ url.name }}</a></li>
+                <li v-for="url in info[category][item].files" :key="url.name"><a :href="url.url">{{ url.name }}</a></li>
               </ul>
             </a-tab-pane>
           </a-tabs>
