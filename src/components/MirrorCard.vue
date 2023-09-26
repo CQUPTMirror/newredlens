@@ -1,6 +1,7 @@
 <template>
   <div
     class="card-body"
+    :title="description"
     @click="openSourceUrl"
     @mouseover="isMouseOver=true"
     @mouseleave="isMouseOver=false">
@@ -78,6 +79,7 @@ export default {
     status: String,
     size: String,
     name: String,
+    description: String,
     url: String,
     isShrinked: Boolean
   },

@@ -15,7 +15,8 @@
             :last-update="item.lastUpdateTimeString"
             :status="item.status"
             :size="item.size"
-            :url="item.url"
+            :description="item.desc"
+            :url="'/' + item.id + '/'"
             :is-shrinked="isShrinked" />
         </div>
         <div v-else class="mirror-container">
