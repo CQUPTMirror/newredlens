@@ -9,7 +9,7 @@ interface News {
 export function useNews () {
   const news: Ref<News[]> = ref([])
   onMounted(async () => {
-    const res = await axios.get(`/static/news.json`)
+    const res = await axios.get(`/api/news`)
     news.value = res.data
   })
   const newsContent = ref('详细内容')
