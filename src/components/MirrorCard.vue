@@ -10,11 +10,11 @@
         <svg
           class="iconfont"
           :style="isMouseOver?{filter:'unset'}:{}">
-          <use :xlink:href="(infoMapAfter[name ?? '']?.icon)?'#'+ (infoMapAfter[name ?? '']?.icon) :type?'#icon-mirror':'#icon-proxy'" />
+          <use :xlink:href="(infoMapAfter[id ?? '']?.icon)?'#'+ (infoMapAfter[id ?? '']?.icon) :type?'#icon-mirror':'#icon-proxy'" />
         </svg>
       </div>
       <div class="detail-left">
-        <span class="title">{{ name }}</span>
+        <span class="title">{{ name ?? id }}</span>
         <span v-if="lastUpdate && lastUpdate.indexOf('1970-01-01')!=-1" class="update">
           <span v-if="!isShrinked" class="lastUpdate">最后更新：</span>
           {{ lastUpdate }}
@@ -31,7 +31,7 @@
       <span v-if="size!=='unknown'" class="size-num">{{ size }}</span>
       <span v-else class="size-num" />
       <svg
-        v-if="infoMap[name ?? '']?.help!==undefined"
+        v-if="infoMap[id ?? '']?.help!==undefined"
         id="i-howto"
         class="iconfont icon-i"
         @click.stop="jumpHelpUrl">
@@ -74,6 +74,7 @@ export default {
   name: 'MirrorCard',
   props: {
     type: Number,
+    id: String,
     lastUpdate: String,
     upstream: String,
     status: String,
@@ -101,14 +102,14 @@ export default {
   },
   methods: {
     genSourceUrl: function () {
-      return this.url || `${window.location.href}${this.name}/`
+      return this.url || `/${this.id}/`
     },
     openSourceUrl: function () {
       window.location.href = this.genSourceUrl()
     },
     jumpHelpUrl: function () {
-      window.location.href = `${window.location.origin}/docs/#/${this.type === 1 ? 'mirror' : 'proxy'}/${
-        this.infoMap[this.name]['help']
+      window.location.href = `/docs/#/${this.type === 1 ? 'mirror' : 'proxy'}/${
+        this.infoMap[this.id]['help']
       }`
     },
     copy: function () {

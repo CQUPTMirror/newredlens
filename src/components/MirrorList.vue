@@ -9,6 +9,7 @@
           <MirrorCard
             v-for="item in mirrorDataFilter"
             :key="item.id"
+            :id="item.id"
             class="mirror-card"
             :type="choice"
             :name="item.alias"
@@ -16,7 +17,6 @@
             :status="item.status"
             :size="item.size"
             :description="item.desc"
-            :url="'/' + item.id + '/'"
             :is-shrinked="isShrinked" />
         </div>
         <div v-else class="mirror-container">
