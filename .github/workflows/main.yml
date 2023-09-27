@@ -45,3 +45,17 @@ jobs:
           asset_path: ./dist.tar.xz
           asset_name: redlens.tar.xz
           asset_content_type: application/x-xz
+      - name: Login to Github Packages
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/cquptmirror/redlens:${{ github.ref_name }}
+            ghcr.io/cquptmirror/redlens:${{ contains(github.ref, 'pre') && 'dev' || 'latest' }}
