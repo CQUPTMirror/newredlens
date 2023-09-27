@@ -68,7 +68,7 @@ export default defineComponent({
   computed: {
     mirrorDataFilter () {
       return (this.mirrorData as MirrorViewItem[]).sort(compareByName).filter(
-        value => value.status !== 'paused' && value.alias.toLocaleLowerCase().includes(this.mirrorQ.toLocaleLowerCase())
+        value => value.status !== 'paused' && (value.alias || value.id).toLocaleLowerCase().includes(this.mirrorQ.toLocaleLowerCase())
       )
     },
     proxyDataFilter () {
