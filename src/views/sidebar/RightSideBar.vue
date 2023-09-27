@@ -77,10 +77,6 @@
         </a-tab-pane>
       </a-tabs>
     </a-modal>
-    <div class="thanks">
-      <h3 style="font-weight: bolder;">致谢</h3>
-      <p>感谢 xTOM 提供 CDNJS 同步上游。</p>
-    </div>
   </div>
 </template>
 
