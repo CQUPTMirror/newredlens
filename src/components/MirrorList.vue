@@ -48,7 +48,16 @@ import RightSideBar from '@/views/sidebar/RightSideBar.vue'
 import { MirrorItem, MirrorViewItem } from '@/types/MirrorItem'
 import { mirrorViewShim } from '@/utils/shims'
 
-const compareByName = (a: MirrorViewItem, b: MirrorViewItem) => a.alias === b.alias ? 0 : (a.alias > b.alias ? 1 : -1)
+const compareByName = (a: MirrorViewItem, b: MirrorViewItem) => {
+  const valA = a.alias || a.id
+  const valB = a.alias || a.id
+  return valA === valB ? 0 : (valA > valB ? 1 : -1)
+}
+
+const searchFilter = (mirrorQ: string) => {
+  return (value: MirrorViewItem) =>
+    value.status !== 'paused' && (value.alias || value.id).toLocaleLowerCase().includes(mirrorQ.toLocaleLowerCase())
+}
 
 export default defineComponent({
   name: 'MirrorList',
@@ -67,12 +76,10 @@ export default defineComponent({
   },
   computed: {
     mirrorDataFilter () {
-      return (this.mirrorData as MirrorViewItem[]).sort(compareByName).filter(
-        value => value.status !== 'paused' && (value.alias || value.id).toLocaleLowerCase().includes(this.mirrorQ.toLocaleLowerCase())
-      )
+      return (this.mirrorData as MirrorViewItem[]).sort(compareByName).filter(searchFilter(this.mirrorQ))
     },
     proxyDataFilter () {
-      return (this.proxyData as MirrorViewItem[]).sort(compareByName)
+      return (this.proxyData as MirrorViewItem[]).sort(compareByName).filter(searchFilter(this.mirrorQ))
     }
   },
   created () {
