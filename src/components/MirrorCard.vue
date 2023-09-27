@@ -15,9 +15,9 @@
       </div>
       <div class="detail-left">
         <span class="title">{{ name }}</span>
-        <span v-if="lastUpdate && lastUpdate.indexOf('0001')===-1" class="update">
+        <span v-if="lastUpdate && lastUpdate.indexOf('1970-01-01')!=-1" class="update">
           <span v-if="!isShrinked" class="lastUpdate">最后更新：</span>
-          {{ lastUpdate.replace(' +0800','') }}
+          {{ lastUpdate }}
         </span>
         <span v-else-if="upstream" class="update">
           {{ upstream }}
