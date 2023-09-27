@@ -14,11 +14,7 @@ export default defineConfig({
     // 自定义代理规则
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true
-      },
-      '/static': {
-        target: 'https://mirror.cqupt.edu.cn',
+        target: 'https://mirrors.cqupt.edu.cn/',
         changeOrigin: true
       }
     }
