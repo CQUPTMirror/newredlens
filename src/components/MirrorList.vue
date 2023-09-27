@@ -23,6 +23,7 @@
           <MirrorCard
             v-for="item in proxyDataFilter"
             :key="item.id"
+            :id="item.id"
             class="mirror-card"
             :type="choice"
             :name="item.alias"
