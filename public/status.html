@@ -68,7 +68,8 @@
         }
 
         #sync,
-        #server {
+        #server,
+        #links {
             margin: 20px;
         }
 
@@ -371,7 +372,7 @@
 <body>
     <div id="nav">
         <a href="#sync">👉 Sync Status</a>
-        <a href="#server">👉 Server Status</a>
+        <!-- <a href="#server">👉 Server Status</a> -->
         <a href="/">👉 Mirrors Index</a>
     </div>
     <div id="sync">
@@ -391,7 +392,7 @@
             </tbody>
         </table>
     </div>
-    <div id="server">
+    <!-- <div id="server">
         <h2>Server Status</h2>
         <iframe src="https://grafana.redrock.team/d-solo/aL8twHeGk/mirrors?orgId=1&theme=light&panelId=2" width="49%" height="300" frameborder="0"></iframe>
         <iframe src="https://grafana.redrock.team/d-solo/aL8twHeGk/mirrors?orgId=1&theme=light&panelId=4" width="49%" height="300" frameborder="0"></iframe>
@@ -404,7 +405,7 @@
         <br>
         <iframe src="https://grafana.redrock.team/d-solo/aL8twHeGk/mirrors?orgId=1&theme=light&panelId=26" width="49%" height="400" frameborder="0"></iframe>
         <iframe src="https://grafana.redrock.team/d-solo/aL8twHeGk/mirrors?orgId=1&theme=light&panelId=24" width="49%" height="400" frameborder="0"></iframe>
-    </div>
+    </div> -->
     <script>
         var genStatus = function(code) {
             if (code != 'failed') {
@@ -416,7 +417,7 @@
             }
         };
         var xmlhttp = new XMLHttpRequest();
-        var res = "/mirrors"
+        var res = "/api/mirrors"
         var tbody = document.getElementById('status').getElementsByTagName('tbody')[0]
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
@@ -424,10 +425,10 @@
                     var data = JSON.parse(this.responseText);
                     data.forEach(function (e) {
                         var row = document.createElement("tr");
-                        var s = '<td>' + e.name + '</td>' +
-                            '<td>' + e.last_update + '</td>' +
+                        var s = '<td>' + e.id + '</td>' +
+                            '<td>' + (new Date(e.lastUpdate*1000)).toLocaleString() + '</td>' +
                             '<td>' + genStatus(e.status) + '</td>' +
-                            '<td>' + e.last_ended + '</td>' +
+                            '<td>' + (new Date(e.lastEnded*1000)).toLocaleString() + '</td>' +
                             '<td>' + e.upstream + '</td>' +
                             '<td>' + e.size + '</td>';
                         if (e.status == 'failed') {
