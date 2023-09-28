@@ -70,7 +70,7 @@
               :tab="info[category][item].alias">
               <h2>{{ info[category][item].alias }}</h2>
               <ul>
-                <li v-for="url in info[category][item].files" :key="url.name"><a :href="url.url">{{ url.name }}</a></li>
+                <li v-for="url in info[category][item].files" :key="url.name"><a :href="url.path">{{ url.name }}</a></li>
               </ul>
             </a-tab-pane>
           </a-tabs>
