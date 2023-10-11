@@ -67,8 +67,8 @@
             <a-tab-pane
               v-for="item in Object.getOwnPropertyNames(info[category])"
               :key="item"
-              :tab="info[category][item].alias">
-              <h2>{{ info[category][item].alias }}</h2>
+              :tab="info[category][item].alias || info[category][item].id">
+              <h2>{{ info[category][item].alias || info[category][item].id }}</h2>
               <ul>
                 <li v-for="url in info[category][item].files" :key="url.name"><a :href="url.path">{{ url.name }}</a></li>
               </ul>
