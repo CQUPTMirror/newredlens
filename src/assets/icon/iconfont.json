@@ -6,6 +6,139 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "37757947",
+      "name": "golang",
+      "font_class": "golang",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "37758385",
+      "name": "quay",
+      "font_class": "quay",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "13303503",
+      "name": "gcp",
+      "font_class": "gcp",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "13303918",
+      "name": "nix",
+      "font_class": "nix",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "14235531",
+      "name": "wireshark",
+      "font_class": "wireshark",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
+    },
+    {
+      "icon_id": "25853103",
+      "name": "maven",
+      "font_class": "maven",
+      "unicode": "e700",
+      "unicode_decimal": 59136
+    },
+    {
+      "icon_id": "27239277",
+      "name": "kubernetes",
+      "font_class": "kubernetes",
+      "unicode": "e6dd",
+      "unicode_decimal": 59101
+    },
+    {
+      "icon_id": "27244106",
+      "name": "nuget",
+      "font_class": "nuget",
+      "unicode": "e849",
+      "unicode_decimal": 59465
+    },
+    {
+      "icon_id": "27268134",
+      "name": "nvidia",
+      "font_class": "nvidia",
+      "unicode": "e9ac",
+      "unicode_decimal": 59820
+    },
+    {
+      "icon_id": "31629021",
+      "name": "openeuler",
+      "font_class": "openeuler",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "35562336",
+      "name": "kicad",
+      "font_class": "kicad",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "27702049",
+      "name": "apache",
+      "font_class": "apache",
+      "unicode": "e8ea",
+      "unicode_decimal": 59626
+    },
+    {
+      "icon_id": "34892659",
+      "name": "almalinux",
+      "font_class": "almalinux",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "37557133",
+      "name": "ubuntukylin",
+      "font_class": "ubuntukylin",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "37557127",
+      "name": "armbian",
+      "font_class": "armbian",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "37557125",
+      "name": "postmarketos",
+      "font_class": "postmarketos",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "27239108",
+      "name": "freebsd",
+      "font_class": "freebsd",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "37557101",
+      "name": "cygwin",
+      "font_class": "cygwin",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "8381257",
+      "name": "icon-23-linux",
+      "font_class": "elrepo",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
       "icon_id": "11155372",
       "name": "fedora",
       "font_class": "fedora",
@@ -41,13 +174,6 @@
       "unicode_decimal": 58910
     },
     {
-      "icon_id": "7171550",
-      "name": "picto-ubuntukylin",
-      "font_class": "ubuntukylin",
-      "unicode": "e62f",
-      "unicode_decimal": 58927
-    },
-    {
       "icon_id": "13470293",
       "name": "android",
       "font_class": "aosp",
@@ -63,7 +189,7 @@
     },
     {
       "icon_id": "10974548",
-      "name": "alpinelinux-logo",
+      "name": "alpine",
       "font_class": "alpine",
       "unicode": "e60c",
       "unicode_decimal": 58892
@@ -196,7 +322,7 @@
     },
     {
       "icon_id": "15591654",
-      "name": "npmjs-fill",
+      "name": "npmjs",
       "font_class": "npm",
       "unicode": "e982",
       "unicode_decimal": 59778
@@ -224,7 +350,7 @@
     },
     {
       "icon_id": "273141",
-      "name": "linux-deepin",
+      "name": "deepin",
       "font_class": "deepin",
       "unicode": "e671",
       "unicode_decimal": 58993
@@ -238,7 +364,7 @@
     },
     {
       "icon_id": "6808499",
-      "name": "Ubuntu",
+      "name": "ubuntu",
       "font_class": "ubuntu",
       "unicode": "edd3",
       "unicode_decimal": 60883
@@ -252,7 +378,7 @@
     },
     {
       "icon_id": "12085761",
-      "name": "kali-linux",
+      "name": "kali",
       "font_class": "kali",
       "unicode": "e602",
       "unicode_decimal": 58882

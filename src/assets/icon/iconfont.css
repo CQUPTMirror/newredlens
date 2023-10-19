@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 1541584 */
-  src: url('iconfont.woff2?t=1622119376303') format('woff2'),
-       url('iconfont.woff?t=1622119376303') format('woff'),
-       url('iconfont.ttf?t=1622119376303') format('truetype');
+  src: url('iconfont.woff2?t=1697710138230') format('woff2'),
+       url('iconfont.woff?t=1697710138230') format('woff'),
+       url('iconfont.ttf?t=1697710138230') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,82 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-golang:before {
+  content: "\e619";
+}
+
+.icon-quay:before {
+  content: "\e61c";
+}
+
+.icon-gcp:before {
+  content: "\e65d";
+}
+
+.icon-nix:before {
+  content: "\e67c";
+}
+
+.icon-wireshark:before {
+  content: "\e68d";
+}
+
+.icon-maven:before {
+  content: "\e700";
+}
+
+.icon-kubernetes:before {
+  content: "\e6dd";
+}
+
+.icon-nuget:before {
+  content: "\e849";
+}
+
+.icon-nvidia:before {
+  content: "\e9ac";
+}
+
+.icon-openeuler:before {
+  content: "\e653";
+}
+
+.icon-kicad:before {
+  content: "\e626";
+}
+
+.icon-apache:before {
+  content: "\e8ea";
+}
+
+.icon-almalinux:before {
+  content: "\e618";
+}
+
+.icon-ubuntukylin:before {
+  content: "\e617";
+}
+
+.icon-armbian:before {
+  content: "\e60f";
+}
+
+.icon-postmarketos:before {
+  content: "\e615";
+}
+
+.icon-freebsd:before {
+  content: "\e6a8";
+}
+
+.icon-cygwin:before {
+  content: "\e614";
+}
+
+.icon-elrepo:before {
+  content: "\e613";
 }
 
 .icon-fedora:before {
@@ -31,10 +107,6 @@
 
 .icon-ceph:before {
   content: "\e61e";
-}
-
-.icon-ubuntukylin:before {
-  content: "\e62f";
 }
 
 .icon-aosp:before {
@@ -160,3 +232,4 @@
 .icon-lxc:before {
   content: "\e603";
 }
+
