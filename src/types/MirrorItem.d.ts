@@ -11,7 +11,7 @@ export type MirrorItem = {
     upstream?: string,
     size?: string,
     url?: string,
-    type: 'mirror' | 'proxy',
+    type: 'mirror' | 'proxy' | 'git',
     errorMsg?: string,
     lastOnline?: number,
     lastRegister?: number

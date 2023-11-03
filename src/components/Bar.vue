@@ -2,6 +2,7 @@
   <div class="bar-wrapper">
     <a class="btn" @click="listUpdate(1)">镜像源列表</a>
     <a class="btn" @click="listUpdate(2)">反向代理列表</a>
+    <a class="btn" @click="listUpdate(3)">Git镜像列表</a>
     <a
       class="btn"
       target="_blank"
