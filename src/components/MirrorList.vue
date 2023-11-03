@@ -19,9 +19,20 @@
             :description="item.desc"
             :is-shrinked="isShrinked" />
         </div>
-        <div v-else class="mirror-container">
+        <div v-else-if="choice===2" class="mirror-container">
           <MirrorCard
             v-for="item in proxyDataFilter"
+            :key="item.id"
+            :id="item.id"
+            class="mirror-card"
+            :type="choice"
+            :name="item.alias"
+            :url="item.url"
+            :upstream="item.upstream" />
+        </div>
+        <div v-else-if="choice===3" class="mirror-container">
+          <MirrorCard
+            v-for="item in gitDataFilter"
             :key="item.id"
             :id="item.id"
             class="mirror-card"
@@ -70,6 +81,7 @@ export default defineComponent({
       mirrorQ: '',
       mirrorData: [],
       proxyData: [],
+      gitData: [],
       isShrinked: false,
       choice: 1
     }
@@ -80,6 +92,9 @@ export default defineComponent({
     },
     proxyDataFilter () {
       return (this.proxyData as MirrorViewItem[]).sort(compareByName).filter(searchFilter(this.mirrorQ))
+    },
+    gitDataFilter () {
+      return (this.gitData as MirrorViewItem[]).sort(compareByName).filter(searchFilter(this.mirrorQ))
     }
   },
   created () {
@@ -93,6 +108,7 @@ export default defineComponent({
       .then(resp => {
         this.mirrorData = (resp.data as MirrorItem[]).filter(item => item.type === 'mirror').map(mirrorViewShim)
         this.proxyData = (resp.data as MirrorItem[]).filter(item => item.type === 'proxy').map(mirrorViewShim)
+        this.gitData = (resp.data as MirrorItem[]).filter(item => item.type === 'git').map(mirrorViewShim)
       })
     window.addEventListener('resize', this.onResize)
   },
