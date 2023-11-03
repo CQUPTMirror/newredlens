@@ -16,6 +16,7 @@
             :last-update="item.lastUpdateTimeString"
             :status="item.status"
             :size="item.size"
+            :url="item.url"
             :description="item.desc"
             :is-shrinked="isShrinked" />
         </div>
