@@ -383,7 +383,7 @@
                     <th>Archive Name</th>
                     <th>Last Updata</th>
                     <th>Status</th>
-                    <th>Last Ended</th>
+                    <th>Next Schedule</th>
                     <th>Upstream</th>
                     <th>Size</th>
                 </tr>
@@ -428,9 +428,9 @@
                         var s = '<td>' + e.id + '</td>' +
                             '<td>' + (new Date(e.lastUpdate*1000)).toLocaleString() + '</td>' +
                             '<td>' + genStatus(e.status) + '</td>' +
-                            '<td>' + (new Date(e.lastEnded*1000)).toLocaleString() + '</td>' +
+                            '<td>' + (new Date(e.nextSchedule*1000)).toLocaleString() + '</td>' +
                             '<td>' + e.upstream + '</td>' +
-                            '<td>' + e.size + '</td>';
+                            '<td>' + e.sizeStr + '</td>';
                         if (e.status == 'failed') {
                             row.className += 'failedSync';
                         }
