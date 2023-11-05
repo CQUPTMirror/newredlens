@@ -407,13 +407,13 @@
         <iframe src="https://grafana.redrock.team/d-solo/aL8twHeGk/mirrors?orgId=1&theme=light&panelId=24" width="49%" height="400" frameborder="0"></iframe>
     </div> -->
     <script>
-        var genStatus = function(code) {
+        var genStatus = function(code, msg) {
             if (code != 'failed') {
                 if (code == 'syncing') return '🔄';
                 if (code == 'pause') return '⏸️ ';
                 return '🙂';
             } else {
-                return '😞';
+                return '😞<span class="comment">' + msg + '</span>';
             }
         };
         var xmlhttp = new XMLHttpRequest();
@@ -424,11 +424,14 @@
                 if (this.status == 200) {
                     var data = JSON.parse(this.responseText);
                     data.forEach(function (e) {
+                        if (e.type == 'proxy') {
+                            return;
+                        }
                         var row = document.createElement("tr");
                         var s = '<td>' + e.id + '</td>' +
-                            '<td>' + (new Date(e.lastUpdate*1000)).toLocaleString() + '</td>' +
-                            '<td>' + genStatus(e.status) + '</td>' +
-                            '<td>' + (new Date(e.nextSchedule*1000)).toLocaleString() + '</td>' +
+                            '<td>' + (e.lastUpdate > 0 ? (new Date(e.lastUpdate*1000)).toLocaleString() : 'First syncing') + '</td>' +
+                            '<td class="withComment">' + genStatus(e.status, e.errorMsg) + '</td>' +
+                            '<td>' + (e.nextSchedule > 0 ? (new Date(e.nextSchedule*1000)).toLocaleString() : '') + '</td>' +
                             '<td>' + e.upstream + '</td>' +
                             '<td>' + e.sizeStr + '</td>';
                         if (e.status == 'failed') {
