@@ -29,6 +29,7 @@
             :type="choice"
             :name="item.alias"
             :url="item.url"
+            :description="item.desc"
             :upstream="item.upstream" />
         </div>
         <div v-else-if="choice===3" class="mirror-container">
@@ -39,8 +40,12 @@
             class="mirror-card"
             :type="choice"
             :name="item.alias"
+            :last-update="item.lastUpdateTimeString"
+            :status="item.status"
+            :size="item.size"
             :url="item.url"
-            :upstream="item.upstream" />
+            :description="item.desc"
+            :is-shrinked="isShrinked" />
         </div>
       </div>
     </a-col>
