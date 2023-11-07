@@ -9,7 +9,8 @@ export type MirrorItem = {
     lastEnded?: number,
     nextSchedule?: number,
     upstream?: string,
-    size?: string,
+    size?: number,
+    sizeStr?: string,
     url?: string,
     type: 'mirror' | 'proxy' | 'git',
     errorMsg?: string,
@@ -23,5 +24,6 @@ export type MirrorViewItem = MirrorItem & {
     lastEndedTimeString?: string,
     nextScheduleTimeString?: string,
     lastOnlineTimeString?: string,
-    lastRegisterTimeString?: string
+    lastRegisterTimeString?: string,
+    sizeString?: string
 }
