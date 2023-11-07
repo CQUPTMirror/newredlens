@@ -15,7 +15,7 @@
             :name="item.alias"
             :last-update="item.lastUpdateTimeString"
             :status="item.status"
-            :size="item.size"
+            :size="item.sizeString"
             :url="item.url"
             :description="item.desc"
             :is-shrinked="isShrinked" />
@@ -42,7 +42,7 @@
             :name="item.alias"
             :last-update="item.lastUpdateTimeString"
             :status="item.status"
-            :size="item.size"
+            :size="item.sizeString"
             :url="item.url"
             :description="item.desc"
             :is-shrinked="isShrinked" />
