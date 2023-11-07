@@ -52,6 +52,9 @@
         "ceph": {
             "icon": "icon-ceph"
         },
+        "CMake": {
+            "icon": "icon-cmake"
+        },
         "cygwin": {
             "icon": "icon-cygwin"
         },
@@ -107,8 +110,14 @@
         "fedora-altarch": {
             "icon": "icon-fedora"
         },
+        "gcc": {
+            "icon": "icon-gcc"
+        },
         "ghcr": {
             "icon": "icon-github"
+        },
+        "glibc": {
+            "icon": "icon-glibc"
         },
         "goproxy": {
             "icon": "icon-golang"
@@ -117,7 +126,34 @@
             "icon": "icon-homebrew",
             "help": "homebrew-mirror-howto"
         },
+        "homebrew-autoupdate": {
+            "icon": "icon-homebrew"
+        },
         "homebrew-bottles": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-bundle": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-cask": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-cask-drivers": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-cask-fonts": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-cask-versions": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-core": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-install": {
+            "icon": "icon-homebrew"
+        },
+        "homebrew-services": {
             "icon": "icon-homebrew"
         },
         "k8s": {
@@ -133,11 +169,26 @@
             "help": "kali-mirror-howto",
             "fill": "#4f7992"
         },
+        "kde-application": {
+            "icon": "icon-kde"
+        },
         "kicad": {
             "icon": "icon-kicad"
         },
         "kubernetes": {
             "icon": "icon-kubernetes"
+        },
+        "linux": {
+            "icon": "icon-linux"
+        },
+        "linux-firmware": {
+            "icon": "icon-linux"
+        },
+        "linux-next": {
+            "icon": "icon-linux"
+        },
+        "linux-stable": {
+            "icon": "icon-linux"
         },
         "lxc-images": {
             "icon": "icon-ziyuan",
