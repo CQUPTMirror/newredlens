@@ -5,7 +5,7 @@
         },
         "alpine": {
             "icon": "icon-alpine",
-            "help": "archlinux",
+            "help": "archlinux"
         },
         "anaconda": {
             "icon": "icon-anaconda",
@@ -14,7 +14,7 @@
         },
         "aosp-monthly": {
             "icon": "icon-aosp",
-            "help": "AOSP",
+            "help": "AOSP"
         },
         "apache": {
             "icon": "icon-apache"
@@ -26,7 +26,7 @@
         },
         "archlinuxarm": {
             "icon": "icon-archlinux",
-            "help": "archlinuxarm",
+            "help": "archlinuxarm"
         },
         "archlinuxcn": {
             "icon": "icon-archlinux",
@@ -35,7 +35,7 @@
         },
         "armbian": {
             "icon": "icon-armbian",
-            "help": "armbian",
+            "help": "armbian"
         },
         "armbian-dl": {
             "icon": "icon-armbian"
@@ -47,15 +47,15 @@
         },
         "centos-altarch": {
             "icon": "icon-centos",
-            "help": "centos-altarch",
+            "help": "centos-altarch"
         },
         "centos-stream": {
             "icon": "icon-centos",
-            "help": "centos-stream",
+            "help": "centos-stream"
         },
         "centos-vault": {
             "icon": "icon-centos",
-            "help": "centos-vault",
+            "help": "centos-vault"
         },
         "ceph": {
             "icon": "icon-ceph"
@@ -65,7 +65,7 @@
         },
         "cygwin": {
             "icon": "icon-cygwin",
-            "help": "cygwin",
+            "help": "cygwin"
         },
         "debian": {
             "icon": "icon-debian",
@@ -79,7 +79,7 @@
         },
         "debian-nonfree": {
             "icon": "icon-debian",
-            "help": "debian",
+            "help": "debian"
         },
         "debian-security": {
             "icon": "icon-debian",
@@ -96,10 +96,10 @@
         },
         "docker-ce": {
             "icon": "icon-docker",
-            "help": "docker-ce",
+            "help": "docker-ce"
         },
         "dockerhub": {
-            "icon": "icon-docker",
+            "icon": "icon-docker"
         },
         "eclipse": {
             "icon": "icon-eclipse"
@@ -111,11 +111,11 @@
         },
         "fedora": {
             "icon": "icon-fedora",
-            "help": "fedora",
+            "help": "fedora"
         },
         "fedora-altarch": {
             "icon": "icon-fedora",
-            "help": "fedora",
+            "help": "fedora"
         },
         "gcc": {
             "icon": "icon-gcc"
@@ -181,11 +181,11 @@
         },
         "kicad": {
             "icon": "icon-kicad",
-            "help": "kicad",
+            "help": "kicad"
         },
         "kubernetes": {
             "icon": "icon-kubernetes",
-            "help": "kubernetes",
+            "help": "kubernetes"
         },
         "linux": {
             "icon": "icon-linux"
@@ -205,7 +205,7 @@
         },
         "manjaro": {
             "icon": "icon-manjaro",
-            "help": "manjaro",
+            "help": "manjaro"
         },
         "manjaro-arm": {
             "icon": "icon-manjaro"
@@ -218,15 +218,15 @@
         },
         "nix": {
             "icon": "icon-nix",
-            "help": "nix",
+            "help": "nix"
         },
         "nix-channels": {
             "icon": "icon-nix",
-            "help": "nix-channels",
+            "help": "nix-channels"
         },
         "nixos-images": {
             "icon": "icon-nix",
-            "help": "nixos-images",
+            "help": "nixos-images"
         },
         "npm": {
             "icon": "icon-npm",
@@ -240,29 +240,29 @@
         },
         "openbsd": {
             "icon": "icon-openbsd",
-            "help": "openbsd",
+            "help": "openbsd"
         },
         "openeuler": {
             "icon": "icon-openeuler"
         },
         "opensuse": {
             "icon": "icon-opensuse",
-            "help": "opensuse",
+            "help": "opensuse"
         },
         "openwrt": {
             "icon": "icon-openwrt",
-            "help": "openwrt",
+            "help": "openwrt"
         },
         "postmarketos": {
             "icon": "icon-postmarketos",
-            "help": "postmarketOS",
+            "help": "postmarketOS"
         },
         "postmarketos-images": {
             "icon": "icon-postmarketos"
         },
         "proxmox": {
             "icon": "icon-proxmox",
-            "help": "proxmox",
+            "help": "proxmox"
         },
         "pypi": {
             "icon": "icon-pypi",
@@ -279,7 +279,7 @@
         },
         "raspberrypi": {
             "icon": "icon-raspberrypi",
-            "help": "raspberrypi",
+            "help": "raspberrypi"
         },
         "raspbian": {
             "icon": "icon-raspberrypi",
@@ -296,7 +296,7 @@
         },
         "ubuntu-ports": {
             "icon": "icon-ubuntu",
-            "help": "ubuntu-ports",
+            "help": "ubuntu-ports"
         },
         "ubuntu-releases": {
             "icon": "icon-ubuntu",
