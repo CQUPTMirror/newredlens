@@ -4,50 +4,58 @@
             "icon": "icon-almalinux"
         },
         "alpine": {
-            "icon": "icon-alpine"
+            "icon": "icon-alpine",
+            "help": "archlinux",
         },
         "anaconda": {
             "icon": "icon-anaconda",
+            "help": "anaconda",
             "fill": "#3faf4b"
         },
         "aosp-monthly": {
-            "icon": "icon-aosp"
+            "icon": "icon-aosp",
+            "help": "AOSP",
         },
         "apache": {
             "icon": "icon-apache"
         },
         "archlinux": {
             "icon": "icon-archlinux",
-            "help": "archlinux-mirror-howto",
+            "help": "archlinux",
             "fill": "#1793d1"
         },
         "archlinuxarm": {
-            "icon": "icon-archlinux"
+            "icon": "icon-archlinux",
+            "help": "archlinuxarm",
         },
         "archlinuxcn": {
             "icon": "icon-archlinux",
-            "help": "archlinuxcn-mirror-howto",
+            "help": "archlinuxcn",
             "fill": "#1793d1"
         },
         "armbian": {
-            "icon": "icon-armbian"
+            "icon": "icon-armbian",
+            "help": "armbian",
         },
         "armbian-dl": {
             "icon": "icon-armbian"
         },
         "centos": {
             "icon": "icon-centos",
-            "help": "centos-mirror-howto",
+            "help": "centos",
             "fill": "#95267c"
         },
         "centos-altarch": {
-            "icon": "icon-centos"
+            "icon": "icon-centos",
+            "help": "centos-altarch",
         },
         "centos-stream": {
-            "icon": "icon-centos"
+            "icon": "icon-centos",
+            "help": "centos-stream",
         },
         "centos-vault": {
-            "icon": "icon-centos"
+            "icon": "icon-centos",
+            "help": "centos-vault",
         },
         "ceph": {
             "icon": "icon-ceph"
@@ -56,59 +64,58 @@
             "icon": "icon-cmake"
         },
         "cygwin": {
-            "icon": "icon-cygwin"
+            "icon": "icon-cygwin",
+            "help": "cygwin",
         },
         "debian": {
             "icon": "icon-debian",
-            "help": "debian-mirror-howto",
+            "help": "debian",
             "fill": "#d70751"
         },
         "debian-cd": {
             "icon": "icon-debian",
-            "help": "debian-mirror-howto?id=debian-本体",
+            "help": "debian-cd",
             "fill": "#d70751"
         },
         "debian-nonfree": {
-            "icon": "icon-debian"
+            "icon": "icon-debian",
+            "help": "debian",
         },
         "debian-security": {
             "icon": "icon-debian",
-            "help": "debian-mirror-howto",
+            "help": "debian",
             "fill": "#d70751"
         },
         "deepin": {
             "icon": "icon-deepin",
-            "help": "deepin-mirror-howto",
             "fill": "#31bff7"
         },
         "deepin-cd": {
             "icon": "icon-deepin",
-            "help": "deepin-mirror-howto",
             "fill": "#31bff7"
         },
         "docker-ce": {
-            "icon": "icon-docker"
+            "icon": "icon-docker",
+            "help": "docker-ce",
         },
         "dockerhub": {
             "icon": "icon-docker",
-            "help": "dockerhub-mirror-howto"
         },
         "eclipse": {
             "icon": "icon-eclipse"
         },
-        "elrepo": {
-            "help": "elrepo-mirror-howto"
-        },
         "epel": {
             "icon": "icon-epel",
-            "help": "epel-mirror-howto",
+            "help": "epel",
             "fill": "#d70751"
         },
         "fedora": {
-            "icon": "icon-fedora"
+            "icon": "icon-fedora",
+            "help": "fedora",
         },
         "fedora-altarch": {
-            "icon": "icon-fedora"
+            "icon": "icon-fedora",
+            "help": "fedora",
         },
         "gcc": {
             "icon": "icon-gcc"
@@ -124,13 +131,14 @@
         },
         "homebrew": {
             "icon": "icon-homebrew",
-            "help": "homebrew-mirror-howto"
+            "help": "homebrew"
         },
         "homebrew-autoupdate": {
             "icon": "icon-homebrew"
         },
         "homebrew-bottles": {
-            "icon": "icon-homebrew"
+            "icon": "icon-homebrew",
+            "help": "homebrew-bottles"
         },
         "homebrew-bundle": {
             "icon": "icon-homebrew"
@@ -161,22 +169,23 @@
         },
         "kali": {
             "icon": "icon-kali",
-            "help": "kali-mirror-howto",
+            "help": "kali",
             "fill": "#4f7992"
         },
         "kali-images": {
             "icon": "icon-kali",
-            "help": "kali-mirror-howto",
             "fill": "#4f7992"
         },
         "kde-application": {
             "icon": "icon-kde"
         },
         "kicad": {
-            "icon": "icon-kicad"
+            "icon": "icon-kicad",
+            "help": "kicad",
         },
         "kubernetes": {
-            "icon": "icon-kubernetes"
+            "icon": "icon-kubernetes",
+            "help": "kubernetes",
         },
         "linux": {
             "icon": "icon-linux"
@@ -195,7 +204,8 @@
             "fill": "#313131"
         },
         "manjaro": {
-            "icon": "icon-manjaro"
+            "icon": "icon-manjaro",
+            "help": "manjaro",
         },
         "manjaro-arm": {
             "icon": "icon-manjaro"
@@ -207,17 +217,19 @@
             "icon": "icon-maven"
         },
         "nix": {
-            "icon": "icon-nix"
+            "icon": "icon-nix",
+            "help": "nix",
         },
         "nix-channels": {
-            "icon": "icon-nix"
+            "icon": "icon-nix",
+            "help": "nix-channels",
         },
         "nixos-images": {
-            "icon": "icon-nix"
+            "icon": "icon-nix",
+            "help": "nixos-images",
         },
         "npm": {
             "icon": "icon-npm",
-            "help": "npm-mirror-howto",
             "fill": "#c00714"
         },
         "nuget": {
@@ -227,29 +239,34 @@
             "icon": "icon-nvidia"
         },
         "openbsd": {
-            "icon": "icon-openbsd"
+            "icon": "icon-openbsd",
+            "help": "openbsd",
         },
         "openeuler": {
             "icon": "icon-openeuler"
         },
         "opensuse": {
-            "icon": "icon-opensuse"
+            "icon": "icon-opensuse",
+            "help": "opensuse",
         },
         "openwrt": {
-            "icon": "icon-openwrt"
+            "icon": "icon-openwrt",
+            "help": "openwrt",
         },
         "postmarketos": {
-            "icon": "icon-postmarketos"
+            "icon": "icon-postmarketos",
+            "help": "postmarketOS",
         },
         "postmarketos-images": {
             "icon": "icon-postmarketos"
         },
         "proxmox": {
-            "icon": "icon-proxmox"
+            "icon": "icon-proxmox",
+            "help": "proxmox",
         },
         "pypi": {
             "icon": "icon-pypi",
-            "help": "pypi-mirror-howto",
+            "help": "pypi",
             "fill": "#4277a6"
         },
         "quay": {
@@ -257,29 +274,32 @@
         },
         "raspberry-pi-os-images": {
             "icon": "icon-raspberrypi",
+            "help": "raspberry-pi-os-images",
             "fill": "#b61040"
         },
         "raspberrypi": {
-            "icon": "icon-raspberrypi"
+            "icon": "icon-raspberrypi",
+            "help": "raspberrypi",
         },
         "raspbian": {
             "icon": "icon-raspberrypi",
+            "help": "raspbian",
             "fill": "#b61040"
         },
         "ubuntu": {
             "icon": "icon-ubuntu",
-            "help": "ubuntu-mirror-howto",
+            "help": "ubuntu",
             "fill": "#d64613"
         },
         "ubuntu-cdimage": {
             "icon": "icon-ubuntu"
         },
         "ubuntu-ports": {
-            "icon": "icon-ubuntu"
+            "icon": "icon-ubuntu",
+            "help": "ubuntu-ports",
         },
         "ubuntu-releases": {
             "icon": "icon-ubuntu",
-            "help": "ubuntu-mirror-howto",
             "fill": "#d64613"
         },
         "ubuntukylin": {
