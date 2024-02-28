@@ -108,9 +108,9 @@ export default {
       window.location.href = this.genSourceUrl()
     },
     jumpHelpUrl: function () {
-      window.location.href = `/docs/#/${this.type === 1 ? 'mirror' : 'proxy'}/${
+      window.location.href = `https://help.mirrors.cqupt.edu.cn/${
         this.infoMap[this.id]['help']
-      }`
+      }/?mirror=CQUPT`
     },
     copy: function () {
       event.stopPropagation()

@@ -32,6 +32,12 @@
       <!--当公告数大于五的时候，考虑截取最新的五条公告-->
 
     </div>
+    <div class="report">
+      <h3 style="font-weight: bolder;">域名选择</h3>
+      <p><a href="https://mirrors.cqupt.edu.cn">https://mirrors.cqupt.edu.cn</a> 自动选择</p>
+      <p><a href="https://ipv4.mirrors.cqupt.edu.cn">https://ipv4.mirrors.cqupt.edu.cn</a> 仅 IPv4</p>
+      <p><a href="https://ipv6.mirrors.cqupt.edu.cn">https://ipv6.mirrors.cqupt.edu.cn</a> 仅 IPv6</p>
+    </div>
     <div class="cdimages">
       <h3 style="font-weight: bolder;">获取发行版映像</h3>
       <p>这里为您提供各大主流 Linux 发行版的安装镜像 / ISO 文件，请根据您的发行版及其详细版本进行选择：</p>
@@ -40,8 +46,15 @@
     </div>
     <div class="report">
       <a href="https://github.com/CQUPTMirror/Report" style="text-decoration-line: none;"><h3 style="font-weight: bolder;">反馈建议</h3></a>
-      <p>Bug 或申请开新的镜像请提 issue</p>
-      <p><a href="https://github.com/CQUPTMirror/Report/issues/new">提交 issue</a></p>
+      <p><a href="https://github.com/CQUPTMirror/Report/issues/new">Bug 或申请开新的镜像请提 issue</a></p>
+      <p><a href="mailto:sre@redrock.team">Redrock SRE 邮箱</a></p>
+      <p><a href="https://qm.qq.com/q/6GJz4XhqDK">CQUPT LUG 交流群</a></p>
+    </div>
+    <div class="report">
+      <h3 style="font-weight: bolder;">相关链接</h3>
+      <p><a href="https://help.mirrors.cqupt.edu.cn">使用帮助</a></p>
+      <p><a href="https://github.com/CQUPTMirror/kubesync">镜像管理器 kubesync 源码</a></p>
+      <p><a href="https://github.com/CQUPTMirror/newredlens">镜像站前端 redlens 源码</a></p>
     </div>
     <a-modal
       v-model:visible="modalVisible"

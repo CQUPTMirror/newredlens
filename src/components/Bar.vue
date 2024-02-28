@@ -9,7 +9,7 @@
       href="/status.html">
       系统状态
     </a>
-    <a class="btn" href="docs/">
+    <a class="btn" href="https://help.mirrors.cqupt.edu.cn">
       使用帮助
     </a>
   </div>
