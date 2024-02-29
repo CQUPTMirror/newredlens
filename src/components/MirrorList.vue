@@ -17,6 +17,7 @@
             :status="item.status"
             :size="item.sizeString"
             :url="item.url"
+            :help-url="item.helpUrl"
             :description="item.desc"
             :is-shrinked="isShrinked" />
         </div>
@@ -29,6 +30,7 @@
             :type="choice"
             :name="item.alias"
             :url="item.url"
+            :help-url="item.helpUrl"
             :description="item.desc"
             :upstream="item.upstream" />
         </div>
@@ -44,6 +46,7 @@
             :status="item.status"
             :size="item.sizeString"
             :url="item.url"
+            :help-url="item.helpUrl"
             :description="item.desc"
             :is-shrinked="isShrinked" />
         </div>

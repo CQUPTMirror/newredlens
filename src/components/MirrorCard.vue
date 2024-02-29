@@ -31,7 +31,7 @@
       <span v-if="size!=='unknown'" class="size-num">{{ size }}</span>
       <span v-else class="size-num" />
       <svg
-        v-if="infoMap[id ?? '']?.help!==undefined"
+        v-if="helpUrl"
         id="i-howto"
         class="iconfont icon-i"
         @click.stop="jumpHelpUrl">
@@ -82,6 +82,7 @@ export default {
     name: String,
     description: String,
     url: String,
+    helpUrl: String,
     isShrinked: Boolean
   },
   data () {
@@ -108,9 +109,7 @@ export default {
       window.location.href = this.genSourceUrl()
     },
     jumpHelpUrl: function () {
-      window.location.href = `https://help.mirrors.cqupt.edu.cn/${
-        this.infoMap[this.id]['help']
-      }/?mirror=CQUPT`
+      window.location.href = `https://help.mirrors.cqupt.edu.cn/${this.helpUrl}/?mirror=CQUPT`
     },
     copy: function () {
       event.stopPropagation()

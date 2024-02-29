@@ -12,6 +12,7 @@ export type MirrorItem = {
     size?: number,
     sizeStr?: string,
     url?: string,
+    helpUrl?: string,
     type: 'mirror' | 'proxy' | 'git',
     errorMsg?: string,
     lastOnline?: number,

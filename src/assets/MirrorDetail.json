@@ -4,58 +4,47 @@
             "icon": "icon-almalinux"
         },
         "alpine": {
-            "icon": "icon-alpine",
-            "help": "archlinux"
+            "icon": "icon-alpine"
         },
         "anaconda": {
             "icon": "icon-anaconda",
-            "help": "anaconda",
             "fill": "#3faf4b"
         },
         "aosp-monthly": {
-            "icon": "icon-aosp",
-            "help": "AOSP"
+            "icon": "icon-aosp"
         },
         "apache": {
             "icon": "icon-apache"
         },
         "archlinux": {
             "icon": "icon-archlinux",
-            "help": "archlinux",
             "fill": "#1793d1"
         },
         "archlinuxarm": {
-            "icon": "icon-archlinux",
-            "help": "archlinuxarm"
+            "icon": "icon-archlinux"
         },
         "archlinuxcn": {
             "icon": "icon-archlinux",
-            "help": "archlinuxcn",
             "fill": "#1793d1"
         },
         "armbian": {
-            "icon": "icon-armbian",
-            "help": "armbian"
+            "icon": "icon-armbian"
         },
         "armbian-dl": {
             "icon": "icon-armbian"
         },
         "centos": {
             "icon": "icon-centos",
-            "help": "centos",
             "fill": "#95267c"
         },
         "centos-altarch": {
-            "icon": "icon-centos",
-            "help": "centos-altarch"
+            "icon": "icon-centos"
         },
         "centos-stream": {
-            "icon": "icon-centos",
-            "help": "centos-stream"
+            "icon": "icon-centos"
         },
         "centos-vault": {
-            "icon": "icon-centos",
-            "help": "centos-vault"
+            "icon": "icon-centos"
         },
         "ceph": {
             "icon": "icon-ceph"
@@ -64,26 +53,21 @@
             "icon": "icon-cmake"
         },
         "cygwin": {
-            "icon": "icon-cygwin",
-            "help": "cygwin"
+            "icon": "icon-cygwin"
         },
         "debian": {
             "icon": "icon-debian",
-            "help": "debian",
             "fill": "#d70751"
         },
         "debian-cd": {
             "icon": "icon-debian",
-            "help": "debian-cd",
             "fill": "#d70751"
         },
         "debian-nonfree": {
-            "icon": "icon-debian",
-            "help": "debian"
+            "icon": "icon-debian"
         },
         "debian-security": {
             "icon": "icon-debian",
-            "help": "debian",
             "fill": "#d70751"
         },
         "deepin": {
@@ -95,8 +79,7 @@
             "fill": "#31bff7"
         },
         "docker-ce": {
-            "icon": "icon-docker",
-            "help": "docker-ce"
+            "icon": "icon-docker"
         },
         "dockerhub": {
             "icon": "icon-docker"
@@ -106,16 +89,13 @@
         },
         "epel": {
             "icon": "icon-epel",
-            "help": "epel",
             "fill": "#d70751"
         },
         "fedora": {
-            "icon": "icon-fedora",
-            "help": "fedora"
+            "icon": "icon-fedora"
         },
         "fedora-altarch": {
-            "icon": "icon-fedora",
-            "help": "fedora"
+            "icon": "icon-fedora"
         },
         "gcc": {
             "icon": "icon-gcc"
@@ -130,15 +110,13 @@
             "icon": "icon-golang"
         },
         "homebrew": {
-            "icon": "icon-homebrew",
-            "help": "homebrew"
+            "icon": "icon-homebrew"
         },
         "homebrew-autoupdate": {
             "icon": "icon-homebrew"
         },
         "homebrew-bottles": {
-            "icon": "icon-homebrew",
-            "help": "homebrew-bottles"
+            "icon": "icon-homebrew"
         },
         "homebrew-bundle": {
             "icon": "icon-homebrew"
@@ -169,7 +147,6 @@
         },
         "kali": {
             "icon": "icon-kali",
-            "help": "kali",
             "fill": "#4f7992"
         },
         "kali-images": {
@@ -180,12 +157,10 @@
             "icon": "icon-kde"
         },
         "kicad": {
-            "icon": "icon-kicad",
-            "help": "kicad"
+            "icon": "icon-kicad"
         },
         "kubernetes": {
-            "icon": "icon-kubernetes",
-            "help": "kubernetes"
+            "icon": "icon-kubernetes"
         },
         "linux": {
             "icon": "icon-linux"
@@ -204,8 +179,7 @@
             "fill": "#313131"
         },
         "manjaro": {
-            "icon": "icon-manjaro",
-            "help": "manjaro"
+            "icon": "icon-manjaro"
         },
         "manjaro-arm": {
             "icon": "icon-manjaro"
@@ -217,16 +191,13 @@
             "icon": "icon-maven"
         },
         "nix": {
-            "icon": "icon-nix",
-            "help": "nix"
+            "icon": "icon-nix"
         },
         "nix-channels": {
-            "icon": "icon-nix",
-            "help": "nix-channels"
+            "icon": "icon-nix"
         },
         "nixos-images": {
-            "icon": "icon-nix",
-            "help": "nixos-images"
+            "icon": "icon-nix"
         },
         "npm": {
             "icon": "icon-npm",
@@ -239,34 +210,28 @@
             "icon": "icon-nvidia"
         },
         "openbsd": {
-            "icon": "icon-openbsd",
-            "help": "openbsd"
+            "icon": "icon-openbsd"
         },
         "openeuler": {
             "icon": "icon-openeuler"
         },
         "opensuse": {
-            "icon": "icon-opensuse",
-            "help": "opensuse"
+            "icon": "icon-opensuse"
         },
         "openwrt": {
-            "icon": "icon-openwrt",
-            "help": "openwrt"
+            "icon": "icon-openwrt"
         },
         "postmarketos": {
-            "icon": "icon-postmarketos",
-            "help": "postmarketOS"
+            "icon": "icon-postmarketos"
         },
         "postmarketos-images": {
             "icon": "icon-postmarketos"
         },
         "proxmox": {
-            "icon": "icon-proxmox",
-            "help": "proxmox"
+            "icon": "icon-proxmox"
         },
         "pypi": {
             "icon": "icon-pypi",
-            "help": "pypi",
             "fill": "#4277a6"
         },
         "quay": {
@@ -274,29 +239,24 @@
         },
         "raspberry-pi-os-images": {
             "icon": "icon-raspberrypi",
-            "help": "raspberry-pi-os-images",
             "fill": "#b61040"
         },
         "raspberrypi": {
-            "icon": "icon-raspberrypi",
-            "help": "raspberrypi"
+            "icon": "icon-raspberrypi"
         },
         "raspbian": {
             "icon": "icon-raspberrypi",
-            "help": "raspbian",
             "fill": "#b61040"
         },
         "ubuntu": {
             "icon": "icon-ubuntu",
-            "help": "ubuntu",
             "fill": "#d64613"
         },
         "ubuntu-cdimage": {
             "icon": "icon-ubuntu"
         },
         "ubuntu-ports": {
-            "icon": "icon-ubuntu",
-            "help": "ubuntu-ports"
+            "icon": "icon-ubuntu"
         },
         "ubuntu-releases": {
             "icon": "icon-ubuntu",
