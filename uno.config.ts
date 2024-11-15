@@ -1,19 +1,33 @@
-import { defineConfig } from 'unocss'
-import { presetUno, presetAttributify, presetIcons } from 'unocss'
+import {
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetUno,
+  presetWebFonts,
+} from 'unocss'
 
 export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetIcons()
+    presetIcons({
+      scale: 1.2,
+      cdn: 'https://esm.sh/',
+      warn: true,
+    }),
+    presetWebFonts(),
   ],
   theme: {
+    dark: 'class',
     colors: {
-      // 自定义颜色
-    }
+      primary: 'var(--primary-color)',
+    },
   },
   shortcuts: {
-    // 自定义快捷方式
-    'btn': 'px-4 py-2 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50',
-  }
-}) 
+    'bg-$bgColor': 'bg-[#ffffff] dark:bg-[#101014]',
+    'text-$textColor': 'text-[#333639] dark:text-[#ffffffd1]',
+    'border-$borderColor': 'text-[#eee] dark:text-[#ffffff1f]',
+    'bg-$hoverColor': 'bg-[#f6f6f6] dark:bg-[#ffffff14]',
+    'prose-base': 'max-w-none',
+  },
+})

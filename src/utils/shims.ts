@@ -1,30 +1,24 @@
-import { MirrorItem, MirrorViewItem } from '@/types/MirrorItem'
-import utils from './index'
+import type { MirrorItem, MirrorViewItem } from '@/types/MirrorItem'
 
-const dateFormat = utils.dateFormat
-
-const dateStringFromMirrorItem = (d?: number): string | undefined => {
-  return d && d > 0 ? dateFormat(new Date(d * 1000)) : undefined
+function formatDate(timestamp: number): string {
+  if (!timestamp)
+    return ''
+  const date = new Date(timestamp * 1000)
+  return date.toLocaleString('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  })
 }
 
-const convertSizeString = (bytes: number) => {
-  const exp = Math.floor(Math.log(bytes) / Math.log(1024))
-  const result = (bytes / Math.pow(1024, exp)).toFixed(2)
-  return result + ' ' + (exp === 0 ? 'B' : 'KMGTPEZY'[exp - 1] + 'B')
-}
-
-const mirrorViewShim = (mirrorItem: MirrorItem): MirrorViewItem => {
-  return { ...mirrorItem,
-    lastUpdateTimeString: dateStringFromMirrorItem(mirrorItem.lastUpdate),
-    lastStartedTimeString: dateStringFromMirrorItem(mirrorItem.lastStarted),
-    lastEndedTimeString: dateStringFromMirrorItem(mirrorItem.lastEnded),
-    nextScheduleTimeString: dateStringFromMirrorItem(mirrorItem.nextSchedule),
-    lastOnlineTimeString: dateStringFromMirrorItem(mirrorItem.lastOnline),
-    lastRegisterTimeString: dateStringFromMirrorItem(mirrorItem.lastRegister),
-    sizeString: mirrorItem.sizeStr || convertSizeString(mirrorItem.size ?? 0)
+export function mirrorViewShim(item: MirrorItem): MirrorViewItem {
+  return {
+    ...item,
+    lastUpdateTimeString: item.lastUpdate ? formatDate(item.lastUpdate) : '',
+    sizeString: item.sizeStr,
   }
-}
-
-export {
-  mirrorViewShim
 }

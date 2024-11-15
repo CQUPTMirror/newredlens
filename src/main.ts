@@ -1,17 +1,13 @@
 import { createApp } from 'vue'
-import App from '@/App.vue'
-import router from './router'
-import 'ant-design-vue/dist/reset.css'
-import Antd from 'ant-design-vue'
-import axios from 'axios'
-import './assets/icon/iconfont.js'
-import '@unocss/reset/tailwind.css'
+import { createPinia } from 'pinia'
+import { NConfigProvider } from 'naive-ui'
+import App from './App.vue'
 import 'uno.css'
+import './styles/main.css'
 
 const app = createApp(App)
+const pinia = createPinia()
 
-app.config.globalProperties.$axios = axios
-
-app.use(router)
-  .use(Antd)
-  .mount('#app')
+app.use(pinia)
+app.component('NConfigProvider', NConfigProvider)
+app.mount('#app')

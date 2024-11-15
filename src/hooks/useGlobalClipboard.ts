@@ -8,12 +8,13 @@ export function useGlobalClipboard() {
     await copy(text)
     if (copied.value) {
       message.success('复制成功')
-    } else {
+    }
+    else {
       message.error('复制失败')
     }
   }
 
   return {
-    copyText
+    copyText,
   }
-} 
+}

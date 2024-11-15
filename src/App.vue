@@ -1,129 +1,67 @@
-<template>
-  <header id="header">
-    <Header />
-  </header>
-  <div class="main-wrapper">
-    <MirrorList />
-  </div>
-  <Footer />
-</template>
-
 <script setup lang="ts">
-import '@/assets/theme/normal.scss'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-import MirrorList from '@/components/MirrorList.vue'
+import { computed } from 'vue'
+import { NConfigProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui'
+import { useTheme } from '@/hooks/use-theme'
+import Footer from '@/views/Footer.vue'
+import Header from '@/views/Header.vue'
+import MirrorList from '@/views/mirror-list/index.vue'
+import Sidebar from '@/views/sidebar/index.vue'
+
+const { isDark } = useTheme()
+
+const themeConfig = computed(() =>
+  isDark.value ? darkTheme : lightTheme,
+)
 </script>
 
-<style lang="scss">
-@import 'assets/theme/normal.scss';
-body {
-  margin: 0;
-  background-color: $main-bg !important;
+<template>
+  <NConfigProvider :theme="themeConfig">
+    <NNotificationProvider>
+      <div class="min-h-screen w-full flex flex-col bg-white dark:bg-[#18181c]">
+        <Header />
+        <div class="flex-1 flex w-full">
+          <main class="flex-1 overflow-y-auto">
+            <MirrorList />
+          </main>
+          <aside class="w-80 border-l border-[#eee] dark:border-[#252525] flex-shrink-0 px-14">
+            <Sidebar />
+          </aside>
+        </div>
+        <Footer />
+      </div>
+    </NNotificationProvider>
+  </NConfigProvider>
+</template>
+
+<style>
+:root {
+  --header-height: 64px;
+  --footer-height: 64px;
 }
-#app {
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-color: $main-bg;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-}
-body,
-h2,
+
+/* 全局链接样式 */
 a {
-  color: $main-font;
-}
-#header {
-  padding: 36px 96px 24px 96px;
-}
-.main-wrapper {
-  padding: 24px 96px;
-  flex: 1;
-  background-color: $main-bg;
-}
-.iconfont {
-  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(3250%) hue-rotate(251deg) brightness(89%) contrast(97%);
+  text-decoration: none;
+  position: relative;
 }
 
-@media screen and (max-width: 1200px) {
-  .main-wrapper {
-    padding: 24px 24px;
-  }
-  #header {
-    padding: 36px 24px 24px 24px;
-  }
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: #3b82f6;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
-@media (max-width: 768px) {
-  #header {
-    padding: 36px 24px 0 24px;
-  }
+a:hover::after {
+  width: 100%;
 }
 
-@media (max-width: 375px) {
-  .main-wrapper {
-    padding: 24px 0;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $main-bg-dark !important;
-  }
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a {
-    color: $main-font-dark !important;
-  }
-  .ant-input {
-    background-color: $float-bg-dark !important;
-    color: $main-font-dark !important;
-    border: 1px solid $main-border-dark !important;
-  }
-  .iconfont {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%);
-  }
-  #app,
-  .main-wrapper,
-  .footer-wrapper {
-    background-color: $main-bg-dark;
-  }
-
-  // "获取镜像" popup start
-  .ant-modal-content {
-    background-color: $main-bg-dark !important;
-    color: $main-font-dark !important;
-  }
-  .ant-modal-header,
-  .ant-tabs-nav-scroll,
-  .ant-modal-footer {
-    background-color: $main-bg-dark !important;
-    border-color: $main-border-dark !important;
-  }
-  .ant-tabs-nav-scroll .ant-tabs-tab {
-    background-color: $main-bg-dark !important;
-    color: $main-font-dark !important;
-    border: none !important;
-  }
-  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
-    border-bottom: 1px solid #1890ff !important;
-  }
-  .ant-tabs .ant-tabs-left-content {
-    border-left: none !important;
-  }
-  .ant-modal-title,
-  .ant-modal-close,
-  .ant-tabs-tabpane {
-    color: $main-font-dark !important;
-  }
-  // "获取镜像" popup end
+.no-hover-line::after {
+  display: none;
 }
 </style>

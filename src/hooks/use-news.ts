@@ -1,32 +1,39 @@
 import { ref } from 'vue'
-
-interface NewsItem {
-  title: string
-  content: string
-}
+import { useAsyncState } from '@vueuse/core'
+import type { NewsItem } from '@/api/news'
+import { getNews } from '@/api/news'
 
 export function useNews() {
-  const newsModal = ref(false)
-  const newsContent = ref('')
-  const news = ref<NewsItem[]>([])
+  const isVisible = ref(false)
+  const selectedNews = ref<NewsItem | null>(null)
 
-  const openModal = (title: string) => {
-    const item = news.value.find(n => n.title === title)
-    if (item) {
-      newsContent.value = item.content
-      newsModal.value = true
-    }
+  // 只在初始化时获取一次所有新闻数据
+  const { state: newsList, isLoading } = useAsyncState<NewsItem[]>(
+    () => getNews(),
+    [],
+    {
+      immediate: true, // 组件创建时立即获取
+      resetOnExecute: false, // 防止重复执行时重置状态
+    },
+  )
+
+  // 直接使用已获取的新闻数据，不再发送请求
+  function openNewsModal(news: NewsItem) {
+    selectedNews.value = news
+    isVisible.value = true
   }
 
-  const closeModal = () => {
-    newsModal.value = false
+  function closeNewsModal() {
+    isVisible.value = false
+    selectedNews.value = null
   }
 
   return {
-    news,
-    newsModal,
-    newsContent,
-    openModal,
-    closeModal
+    isLoading,
+    isVisible,
+    newsList,
+    selectedNews,
+    openNewsModal,
+    closeNewsModal,
   }
 }
