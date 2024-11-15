@@ -1,40 +1,28 @@
-import { onMounted, Ref, ref, watch, toRaw } from 'vue'
-import axios from 'axios'
-import { FileItem } from '@/types/FileItem'
+import { ref, reactive } from 'vue'
 
-export function useIsoModal () {
-  const info = ref({})
-  onMounted(async () => {
-    const res = await axios.get(`/api/files`)
-    const data: FileItem[] = res.data
-    const os: Record<string, FileItem> = {}
-    const app: Record<string, FileItem> = {}
-    for (const item of data) {
-      switch (item.type) {
-        case 'os':
-          os[item.id] = item
-          break
-        case 'app':
-          app[item.id] = item
-          break
-        default:
-          break
-      }
+interface IsoInfo {
+  [category: string]: {
+    [key: string]: {
+      id: string
+      alias?: string
+      files: Array<{
+        name: string
+        path: string
+      }>
     }
-    info.value = { os, app }
-  })
+  }
+}
+
+export function useIsoModal() {
   const modalVisible = ref(false)
   const categoryActiveKey = ref('os')
   const itemActiveKey = ref('')
-  watch(categoryActiveKey, () => {
-    const detail = toRaw(info.value[categoryActiveKey.value])
-    if (Object.getOwnPropertyNames(detail).length > 0) {
-      itemActiveKey.value = Object.getOwnPropertyNames(detail)[0]
-    }
-  })
-  const handleOk = e => {
+  const info = reactive<IsoInfo>({})
+
+  const handleOk = () => {
     modalVisible.value = false
   }
+
   return {
     info,
     modalVisible,

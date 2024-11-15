@@ -1,19 +1,20 @@
-import service from '@/utils/api'
+import { type AxiosResponse } from 'axios'
+import apiClient from './apiClient'
 
 interface LoginResp {
-  accessToken: string,
+  accessToken: string
   refreshToken: string
 }
 
 class Admin {
-  login (params: { username: string, password: string }): Ajax.PromiseAxiosResponse<LoginResp> {
-    return service.post(`/api/v1/login`, params)
+  login (params: { username: string, password: string }): Promise<AxiosResponse<LoginResp>> {
+    return apiClient.post('/api/v1/login', params)
   }
 }
 
 const AdminApi = new Admin()
 
 export {
-  LoginResp,
+  type LoginResp,
   AdminApi
 }

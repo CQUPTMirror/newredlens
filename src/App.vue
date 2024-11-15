@@ -8,22 +8,11 @@
   <Footer />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import '@/assets/theme/normal.scss'
-
-import { defineComponent } from 'vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import MirrorList from '@/components/MirrorList.vue'
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    Header,
-    Footer,
-    MirrorList
-  }
-})
 </script>
 
 <style lang="scss">

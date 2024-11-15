@@ -1,26 +1,32 @@
-import { onMounted, Ref, ref } from 'vue'
-import axios from 'axios'
+import { ref } from 'vue'
 
-interface News {
+interface NewsItem {
   title: string
   content: string
 }
 
-export function useNews () {
-  const news: Ref<News[]> = ref([])
-  onMounted(async () => {
-    const res = await axios.get(`/api/news`)
-    news.value = res.data
-  })
-  const newsContent = ref('详细内容')
+export function useNews() {
   const newsModal = ref(false)
+  const newsContent = ref('')
+  const news = ref<NewsItem[]>([])
 
   const openModal = (title: string) => {
-    newsContent.value = news.value.find(item => item.title === title)!.content
-    newsModal.value = true
+    const item = news.value.find(n => n.title === title)
+    if (item) {
+      newsContent.value = item.content
+      newsModal.value = true
+    }
   }
+
   const closeModal = () => {
     newsModal.value = false
   }
-  return { news, newsContent, newsModal, openModal, closeModal }
+
+  return {
+    news,
+    newsModal,
+    newsContent,
+    openModal,
+    closeModal
+  }
 }

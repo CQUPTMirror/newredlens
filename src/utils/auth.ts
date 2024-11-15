@@ -4,7 +4,7 @@ export const redirectLogin = () => {
   window.location.href = uri
 }
 
-export const refreshTokenException = (code) => {
+export const refreshTokenException = (code: number) => {
   let flag = false
   const codes = [10000, 10042, 10050, 10052]
   if (codes.includes(code)) {

@@ -1,52 +1,24 @@
 <template>
-  <div class="bar-wrapper">
-    <a class="btn" @click="listUpdate(1)">镜像源列表</a>
-    <a class="btn" @click="listUpdate(2)">反向代理列表</a>
-    <a class="btn" @click="listUpdate(3)">Git镜像列表</a>
+  <div class="text-center">
+    <a class="text-base mx-1.25 text-main hover:text-accent transition-all duration-200 cursor-pointer inline-block no-underline" @click="emit('listUpdate', 1)">镜像源列表</a>
+    <a class="text-base mx-1.25 text-main hover:text-accent transition-all duration-200 cursor-pointer inline-block no-underline" @click="emit('listUpdate', 2)">反向代理列表</a>
+    <a class="text-base mx-1.25 text-main hover:text-accent transition-all duration-200 cursor-pointer inline-block no-underline" @click="emit('listUpdate', 3)">Git镜像列表</a>
     <a
-      class="btn"
+      class="text-base mx-1.25 text-main hover:text-accent transition-all duration-200 cursor-pointer inline-block no-underline"
       target="_blank"
       href="/status.html">
       系统状态
     </a>
-    <a class="btn" href="https://help.mirrors.cqupt.edu.cn">
+    <a 
+      class="text-base mx-1.25 text-main hover:text-accent transition-all duration-200 cursor-pointer inline-block no-underline" 
+      href="https://help.mirrors.cqupt.edu.cn">
       使用帮助
     </a>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'Bar',
-  methods: {
-    listUpdate (choice) {
-      this.$bus.trigger('list-update-msg', choice)
-    }
-  }
-})
+<script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'listUpdate', choice: number): void
+}>()
 </script>
-
-<style lang="scss" scoped>
-@import "../assets/theme/normal.scss";
-.bar-wrapper {
-  text-align: center;
-  .btn {
-    font-size: 16px;
-    margin: 0 5px;
-  }
-  a {
-    color: $main-font;
-    text-decoration: none;
-    cursor: pointer;
-    &:hover {
-      transition: all 0.2s;
-      color: $accent;
-    }
-
-    display: inline-block;
-  }
-}
-
-</style>

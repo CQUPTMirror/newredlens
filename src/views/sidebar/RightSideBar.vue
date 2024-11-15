@@ -73,7 +73,7 @@
         <a-tab-pane
           v-for="category in Object.getOwnPropertyNames(info)"
           :key="category"
-          :tab="{os: '操作系统', app: '应用程序'}[category]">
+          :tab="categoryMap[category]">
           <a-tabs
             v-model:activeKey="itemActiveKey"
             tab-position="left">
@@ -119,6 +119,10 @@ export default defineComponent({
         context.emit('update:mirrorQ', value)
       }
     })
+    const categoryMap: { [key: string]: string } = {
+      os: '操作系统',
+      app: '应用程序'
+    }
     return {
       modalVisible,
       info,
@@ -130,7 +134,8 @@ export default defineComponent({
       newsModal,
       openModal,
       closeModal,
-      q
+      q,
+      categoryMap
     }
   }
 })
