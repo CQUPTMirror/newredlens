@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { NConfigProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui'
+import { NConfigProvider, NMessageProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui'
 import { useTheme } from '@/hooks/use-theme'
 import Footer from '@/views/Footer.vue'
 import Header from '@/views/Header.vue'
@@ -16,20 +16,22 @@ const themeConfig = computed(() =>
 
 <template>
   <NConfigProvider :theme="themeConfig">
-    <NNotificationProvider>
-      <div class="min-h-screen w-full flex flex-col bg-white dark:bg-[#18181c]">
-        <Header />
-        <div class="flex-1 flex w-full">
-          <main class="flex-1 overflow-y-auto">
-            <MirrorList />
-          </main>
-          <aside class="w-80 border-l border-[#eee] dark:border-[#252525] flex-shrink-0 px-14">
-            <Sidebar />
-          </aside>
+    <NMessageProvider>
+      <NNotificationProvider>
+        <div class="min-h-screen w-full flex flex-col bg-white dark:bg-[#18181c]">
+          <Header />
+          <div class="flex-1 flex w-full">
+            <main class="flex-1 overflow-y-auto">
+              <MirrorList />
+            </main>
+            <aside class="w-80 border-l border-[#eee] dark:border-[#252525] flex-shrink-0 px-14">
+              <Sidebar />
+            </aside>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </NNotificationProvider>
+      </NNotificationProvider>
+    </NMessageProvider>
   </NConfigProvider>
 </template>
 
