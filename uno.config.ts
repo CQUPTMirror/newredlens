@@ -5,29 +5,39 @@ import {
   presetUno,
   presetWebFonts,
 } from 'unocss'
+import type { IconifyJSON } from '@iconify/types'
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
+import { IconClasses } from './src/config/icons'
 
 export default defineConfig({
+  safelist: IconClasses,
   presets: [
     presetUno(),
     presetAttributify(),
     presetIcons({
       scale: 1.2,
-      cdn: 'https://esm.sh/',
-      warn: true,
+      collections: {
+        'carbon': () => import('@iconify-json/carbon/icons.json').then(i => i.default as IconifyJSON),
+        'devicon': () => import('@iconify-json/devicon/icons.json').then(i => i.default as IconifyJSON),
+        'file-icons': () => import('@iconify-json/file-icons/icons.json').then(i => i.default as IconifyJSON),
+        'logos': () => import('@iconify-json/logos/icons.json').then(i => i.default as IconifyJSON),
+        'simple-icons': () => import('@iconify-json/simple-icons/icons.json').then(i => i.default as IconifyJSON),
+        'custom': FileSystemIconLoader(
+          './src/assets/icons',
+          svg => svg.replace(/#fff/, 'currentColor'),
+        ),
+      },
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
     }),
-    presetWebFonts(),
+    presetWebFonts({
+      fonts: {
+        sans: 'DM Sans',
+        serif: 'DM Serif Display',
+        mono: 'DM Mono',
+      },
+    }),
   ],
-  theme: {
-    dark: 'class',
-    colors: {
-      primary: 'var(--primary-color)',
-    },
-  },
-  shortcuts: {
-    'bg-$bgColor': 'bg-[#ffffff] dark:bg-[#101014]',
-    'text-$textColor': 'text-[#333639] dark:text-[#ffffffd1]',
-    'border-$borderColor': 'text-[#eee] dark:text-[#ffffff1f]',
-    'bg-$hoverColor': 'bg-[#f6f6f6] dark:bg-[#ffffff14]',
-    'prose-base': 'max-w-none',
-  },
 })

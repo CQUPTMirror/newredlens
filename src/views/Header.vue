@@ -66,7 +66,7 @@ function toggleTheme() {
         class="ml-5 cursor-pointer text-[#666] hover:text-blue-500 transition-colors"
         @click="toggleTheme"
       >
-        <div :class="isDark ? 'i-ep-moon' : 'i-ep-sunny'" class="text-xl" />
+        <div :class="isDark ? 'i-carbon-moon' : 'i-carbon-sun'" class="text-xl" />
       </div>
     </div>
   </div>

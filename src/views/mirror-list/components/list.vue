@@ -1,140 +1,138 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { useAsyncState, useWindowSize } from '@vueuse/core'
-import { fetchMirrors } from '../../../api/mirrors'
-import MirrorCard from './card.vue'
-import type { MirrorViewItem } from '@/types/MirrorItem'
+import { computed, ref } from 'vue'
+import { NButton, NButtonGroup, NInput } from 'naive-ui'
+import { useAsyncState } from '@vueuse/core'
+import MirrorCard from './MirrorCard.vue'
+import { fetchMirrors } from '@/api/mirrors'
+import type { MirrorItem } from '@/api/mirrors'
 
-const mirrorQ = ref('')
-const { width } = useWindowSize()
-const isShrinked = computed(() => width.value <= 1250)
-const choice = ref(1)
-
-function compareByName(a: MirrorViewItem, b: MirrorViewItem) {
-  const valA = a.alias || a.id
-  const valB = b.alias || b.id
-  return valA === valB ? 0 : valA > valB ? 1 : -1
-}
-
-function searchFilter(value: MirrorViewItem) {
-  return value.status !== 'paused'
-    && (value.alias || value.id)
-      .toLocaleLowerCase()
-      .includes(mirrorQ.value.toLocaleLowerCase())
-}
-
-const {
-  state: mirrorState,
-  isLoading: loading,
-  error,
-  execute: retryLoad,
-} = useAsyncState(
-  async () => {
-    const data = await fetchMirrors()
-    if (!data) {
-      throw new Error('未获取到镜像数据')
-    }
-
-    const convertToViewItem = (item: any): MirrorViewItem => ({
-      ...item,
-      status: item.status as 'success' | 'syncing' | 'cached' | 'none' | 'failed' | 'pre-syncing' | 'paused' | 'disabled',
-    })
-
-    return {
-      mirrors: (data.mirrors || []).map(convertToViewItem),
-      proxies: (data.proxies || []).map(convertToViewItem),
-      gits: (data.gits || []).map(convertToViewItem),
-    }
+const { state, isLoading, error } = useAsyncState<MirrorItem[]>(
+  fetchMirrors,
+  [],
+  {
+    immediate: true,
   },
-  { mirrors: [], proxies: [], gits: [] },
 )
 
-const mirrorData = computed(() => mirrorState.value.mirrors)
-const proxyData = computed(() => mirrorState.value.proxies)
-const gitData = computed(() => mirrorState.value.gits)
+// 筛选条件
+const searchQuery = ref('')
+const selectedType = ref('all')
 
-function getMirrorCardProps(item: MirrorViewItem) {
-  return {
-    id: item.id,
-    type: choice.value,
-    name: item.alias,
-    lastUpdate: item.lastUpdateTimeString,
-    status: item.status,
-    size: item.sizeString,
-    url: item.url,
-    helpUrl: item.helpUrl,
-    description: item.desc,
-    isShrinked: isShrinked.value,
-    upstream: item.upstream,
-  }
-}
+// 类型选项
+const typeOptions = [
+  { label: '全部', value: 'all' },
+  { label: '镜像', value: 'mirror' },
+  { label: '代理', value: 'proxy' },
+  { label: 'Git', value: 'git' },
+]
 
-function updateChoice(newChoice: number) {
-  choice.value = newChoice
-}
+// 过滤后的镜像列表
+const filteredMirrors = computed(() => {
+  if (!state.value)
+    return []
 
-onMounted(() => {
-  retryLoad()
-})
+  return state.value.filter((mirror) => {
+    // 类型筛选
+    const matchType = selectedType.value === 'all' || mirror.type === selectedType.value
+    // 搜索筛选
+    const query = searchQuery.value.toLowerCase()
+    const matchSearch = !query
+      || mirror.alias.toLowerCase().includes(query)
+      || mirror.desc?.toLowerCase().includes(query)
 
-onUnmounted(() => {
-  // 在这里添加清理逻辑
+    return matchType && matchSearch
+  })
 })
 </script>
 
 <template>
-  <div class="grid grid-cols-12 gap-6">
-    <div class="col-span-12 md:col-span-9">
-      <div class="mirror-list">
-        <div v-if="loading" class="text-center py8">
-          <p>加载中...</p>
-        </div>
+  <div>
+    <!-- 筛选栏 -->
+    <div class="mb-4 px-4">
+      <div class="flex items-center justify-between">
+        <!-- 类型筛选按钮组 -->
+        <NButtonGroup>
+          <NButton
+            v-for="option in typeOptions"
+            :key="option.value"
+            size="small"
+            :type="selectedType === option.value ? 'primary' : 'default'"
+            :ghost="selectedType !== option.value"
+            @click="selectedType = option.value"
+          >
+            {{ option.label }}
+          </NButton>
+        </NButtonGroup>
 
-        <div v-else-if="error" class="text-center py8">
-          <p class="text-red-500">
-            {{ error }}
-          </p>
-        </div>
-
-        <template v-else>
-          <div
-            v-if="choice === 1"
-            class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
-          >
-            <MirrorCard
-              v-for="item in mirrorDataFilter"
-              :key="item.id"
-              v-bind="getMirrorCardProps(item)"
-              class="bg-white dark:bg-dark-500 border-none box-border h-36 md:h-27"
-            />
-          </div>
-          <div
-            v-else-if="choice === 2"
-            class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
-          >
-            <MirrorCard
-              v-for="item in proxyDataFilter"
-              :key="item.id"
-              v-bind="getMirrorCardProps(item)"
-              class="bg-white dark:bg-dark-500 border-none box-border h-36 md:h-27"
-            />
-          </div>
-          <div
-            v-else-if="choice === 3"
-            class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
-          >
-            <MirrorCard
-              v-for="item in gitDataFilter"
-              :key="item.id"
-              v-bind="getMirrorCardProps(item)"
-              class="bg-white dark:bg-dark-500 border-none box-border h-36 md:h-27"
-            />
-          </div>
-        </template>
+        <!-- 搜索框 -->
+        <NInput
+          v-model:value="searchQuery"
+          type="text"
+          placeholder="搜索镜像..."
+          class="!w-70"
+        >
+          <template #prefix>
+            <div class="i-carbon-search text-lg opacity-50" />
+          </template>
+        </NInput>
       </div>
     </div>
-    <div class="col-span-12 md:col-span-3">
-      <right-side-bar v-model:mirror-q="mirrorQ" @update:choice="updateChoice" />
+
+    <!-- 镜像列表 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+      <!-- 加载状态 -->
+      <div v-if="isLoading" class="col-span-full text-center py-8">
+        <div class="i-carbon-circle-dash animate-spin text-3xl text-blue-500 mx-auto mb-2" />
+        <p class="text-gray-600 dark:text-gray-400">
+          加载中...
+        </p>
+      </div>
+
+      <!-- 错误状态 -->
+      <div v-else-if="error" class="col-span-full text-center py-8">
+        <div class="i-carbon-warning-alt text-3xl text-red-500 mx-auto mb-2" />
+        <p class="text-red-600 dark:text-red-400">
+          加载失败，请稍后重试
+        </p>
+        <p class="text-sm text-red-400 mt-2">
+          {{ error }}
+        </p>
+      </div>
+
+      <!-- 空状态 -->
+      <div v-else-if="filteredMirrors.length === 0" class="col-span-full text-center py-8">
+        <div class="i-carbon-search text-3xl text-gray-400 mx-auto mb-2" />
+        <p class="text-gray-500 dark:text-gray-400">
+          未找到匹配的镜像
+        </p>
+      </div>
+
+      <!-- 数据展示 -->
+      <template v-else>
+        <MirrorCard
+          v-for="mirror in filteredMirrors"
+          :key="mirror.id"
+          :mirror="mirror"
+        />
+      </template>
     </div>
   </div>
 </template>
+
+<style scoped>
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+:deep(.n-input) {
+  --n-height: 32px;
+}
+
+:deep(.n-button) {
+  padding: 0 16px;
+}
+
+:deep(.n-button-group .n-button:not(:last-child)) {
+  margin-right: 1px;
+}
+</style>

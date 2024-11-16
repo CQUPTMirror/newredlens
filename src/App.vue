@@ -18,13 +18,13 @@ const themeConfig = computed(() =>
   <NConfigProvider :theme="themeConfig">
     <NMessageProvider>
       <NNotificationProvider>
-        <div class="min-h-screen w-full flex flex-col bg-white dark:bg-[#18181c]">
+        <div class="min-h-screen w-full flex flex-col bg-gray-50 dark:bg-[#18181c]">
           <Header />
-          <div class="flex-1 flex w-full">
-            <main class="flex-1 overflow-y-auto">
+          <div class="flex-1 container mx-auto flex gap-6 px-6" style="height: calc(100vh - var(--header-height) - var(--footer-height))">
+            <main class="flex-1 rounded-xl shadow-sm my-6">
               <MirrorList />
             </main>
-            <aside class="w-80 border-l border-[#eee] dark:border-[#252525] flex-shrink-0 px-14">
+            <aside class="w-80 my-6">
               <Sidebar />
             </aside>
           </div>
@@ -65,5 +65,39 @@ a:hover::after {
 
 .no-hover-line::after {
   display: none;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* 容器最大宽度响应式 */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
 }
 </style>

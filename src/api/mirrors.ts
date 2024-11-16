@@ -1,6 +1,6 @@
 import { createApiClient } from './core/apiClient'
 
-interface MirrorItem {
+export interface MirrorItem {
   id: string
   alias: string
   desc: string
@@ -20,14 +20,9 @@ interface MirrorItem {
   lastRegister: number
 }
 
-interface MirrorResponse {
-  mirrors: MirrorItem[]
-  proxies: MirrorItem[]
-  gits: MirrorItem[]
-}
-
 const apiClient = createApiClient('')
 
-export function fetchMirrors(): Promise<MirrorResponse> {
-  return apiClient.get<MirrorResponse>('/api/mirrors')
+export async function fetchMirrors(): Promise<MirrorItem[]> {
+  const response = await apiClient.get<MirrorItem[]>('/api/mirrors')
+  return response
 }
