@@ -2,6 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('theme-preference')
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const hour = new Date().getHours()
+          const isNight = hour >= 18 || hour < 6
+          
+          const shouldBeDark = savedTheme 
+            ? JSON.parse(savedTheme)
+            : prefersDark || isNight
+            
+          if (shouldBeDark)
+            document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>重庆邮电大学开源镜像站 | CQUPT OpenSource Mirror</title>

@@ -1,22 +1,24 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueJsxPlugin from '@vitejs/plugin-vue-jsx'
-import { resolve } from 'path'
+import UnoCSS from 'unocss/vite'
 
 export default defineConfig({
-  plugins: [vue(), vueJsxPlugin()],
+  plugins: [
+    vue(),
+    UnoCSS(),
+  ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src')
-    }
+      '@': resolve(__dirname, './src'),
+    },
   },
   server: {
-    // 自定义代理规则
     proxy: {
       '/api': {
-        target: 'https://mirrors.cqupt.edu.cn/',
-        changeOrigin: true
-      }
-    }
-  }
+        target: 'https://mirrors.cqupt.edu.cn',
+        changeOrigin: true,
+      },
+    },
+  },
 })

@@ -1,140 +1,235 @@
-<template>
-  <header id="header">
-    <Header />
-  </header>
-  <div class="main-wrapper">
-    <MirrorList />
-  </div>
-  <Footer />
-</template>
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { NConfigProvider, NMessageProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui'
+import { useTheme } from '@/hooks/use-theme'
+import Footer from '@/views/Footer.vue'
+import Header from '@/views/Header.vue'
+import MirrorList from '@/views/mirror-list/index.vue'
+import Sidebar from '@/views/sidebar/index.vue'
 
-<script lang="ts">
-import '@/assets/theme/normal.scss'
+const { isDark } = useTheme()
 
-import { defineComponent } from 'vue'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-import MirrorList from '@/components/MirrorList.vue'
+const themeConfig = computed(() =>
+  isDark.value ? darkTheme : lightTheme,
+)
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    Header,
-    Footer,
-    MirrorList
-  }
-})
+const showSidebar = ref(false)
+
+function toggleSidebar() {
+  showSidebar.value = !showSidebar.value
+}
 </script>
 
-<style lang="scss">
-@import 'assets/theme/normal.scss';
-body {
-  margin: 0;
-  background-color: $main-bg !important;
+<template>
+  <NConfigProvider
+    :theme="themeConfig"
+    :inline-theme="false"
+  >
+    <NMessageProvider>
+      <NNotificationProvider>
+        <div class="min-h-screen flex flex-col relative overflow-x-clip">
+          <div class="content-wrapper mx-auto px-4 lg:px-8">
+            <!-- Header -->
+            <Header @toggle-sidebar="toggleSidebar" />
+
+            <!-- 主要内容区域 -->
+            <div class="lg:flex gap-8 relative lg:py-6 sm:py-2">
+              <!-- 主内容区 -->
+              <main class="flex-1 min-w-0">
+                <MirrorList />
+              </main>
+
+              <!-- 桌面端侧边栏 -->
+              <aside class="w-[300px] hidden lg:block shrink-0">
+                <div class="sticky top-6" style="position: -webkit-sticky;">
+                  <div class="bg-white dark:bg-dark rounded-xl shadow-sm dark:shadow-md p-4">
+                    <Sidebar />
+                  </div>
+                </div>
+              </aside>
+
+              <!-- 移动端侧边栏遮罩 -->
+              <div
+                v-if="showSidebar"
+                class="fixed inset-0 bg-black/20 dark:bg-black/40 z-40 lg:hidden backdrop-blur-sm"
+                @click="toggleSidebar"
+              />
+
+              <!-- 移动端侧边栏 -->
+              <aside
+                class="fixed right-0 top-0 bottom-0 w-[280px] bg-white dark:bg-dark shadow-xl transform transition-transform duration-300 z-50 lg:hidden overflow-y-auto"
+                :class="showSidebar ? 'translate-x-0' : 'translate-x-full'"
+              >
+                <!-- 侧边栏头部 -->
+                <div class="sticky top-0 z-10 bg-white dark:bg-dark border-b border-gray-100 dark:border-gray-800 px-4 py-4 flex items-center justify-between">
+                  <span class="text-base font-medium text-gray-900 dark:text-gray-100">功能菜单</span>
+                  <div
+                    class="w-9 h-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+                    @click="toggleSidebar"
+                  >
+                    <div class="i-carbon-close text-base text-gray-600 dark:text-gray-400" />
+                  </div>
+                </div>
+
+                <!-- 侧边栏内容 -->
+                <div class="px-4 py-3">
+                  <Sidebar />
+                </div>
+              </aside>
+            </div>
+
+            <!-- Footer -->
+            <Footer />
+          </div>
+        </div>
+      </NNotificationProvider>
+    </NMessageProvider>
+  </NConfigProvider>
+</template>
+
+<style>
+:root {
+  --header-height: 112px;
+  --footer-height: 64px;
 }
-#app {
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-color: $main-bg;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-}
-body,
-h2,
+
+/* 全局链接样式 */
 a {
-  color: $main-font;
-}
-#header {
-  padding: 36px 96px 24px 96px;
-}
-.main-wrapper {
-  padding: 24px 96px;
-  flex: 1;
-  background-color: $main-bg;
-}
-.iconfont {
-  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(3250%) hue-rotate(251deg) brightness(89%) contrast(97%);
+  text-decoration: none;
+  position: relative;
 }
 
-@media screen and (max-width: 1200px) {
-  .main-wrapper {
-    padding: 24px 24px;
-  }
-  #header {
-    padding: 36px 24px 24px 24px;
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: #22c55e;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+.dark a::after {
+  background-color: #4ade80;
+}
+
+.no-hover-line::after {
+  display: none;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* 容器最大宽度响应式 */
+.content-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .content-wrapper {
+    max-width: 640px;
   }
 }
 
-@media (max-width: 768px) {
-  #header {
-    padding: 36px 24px 0 24px;
+@media (min-width: 768px) {
+  .content-wrapper {
+    max-width: 768px;
   }
 }
 
-@media (max-width: 375px) {
-  .main-wrapper {
-    padding: 24px 0;
+@media (min-width: 1024px) {
+  .content-wrapper {
+    max-width: 1024px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $main-bg-dark !important;
+@media (min-width: 1280px) {
+  .content-wrapper {
+    max-width: 1280px;
   }
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a {
-    color: $main-font-dark !important;
-  }
-  .ant-input {
-    background-color: $float-bg-dark !important;
-    color: $main-font-dark !important;
-    border: 1px solid $main-border-dark !important;
-  }
-  .iconfont {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(554%) hue-rotate(23deg) brightness(112%) contrast(75%);
-  }
-  #app,
-  .main-wrapper,
-  .footer-wrapper {
-    background-color: $main-bg-dark;
-  }
+}
 
-  // "获取镜像" popup start
-  .ant-modal-content {
-    background-color: $main-bg-dark !important;
-    color: $main-font-dark !important;
+@media (min-width: 1536px) {
+  .content-wrapper {
+    max-width: 1400px;
   }
-  .ant-modal-header,
-  .ant-tabs-nav-scroll,
-  .ant-modal-footer {
-    background-color: $main-bg-dark !important;
-    border-color: $main-border-dark !important;
+}
+
+/* 优化滚动条过渡效果 */
+::-webkit-scrollbar-thumb {
+  transition: background-color 0.5s ease;
+}
+
+/* 优化链接下划线过渡效果 */
+a::after {
+  transition: all 0.5s ease;
+}
+
+@keyframes theme-toggle-ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
   }
-  .ant-tabs-nav-scroll .ant-tabs-tab {
-    background-color: $main-bg-dark !important;
-    color: $main-font-dark !important;
-    border: none !important;
+  100% {
+    width: 400vmax;
+    height: 400vmax;
+    opacity: 0;
   }
-  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
-    border-bottom: 1px solid #1890ff !important;
-  }
-  .ant-tabs .ant-tabs-left-content {
-    border-left: none !important;
-  }
-  .ant-modal-title,
-  .ant-modal-close,
-  .ant-tabs-tabpane {
-    color: $main-font-dark !important;
-  }
-  // "获取镜像" popup end
+}
+
+/* 设置深色模式下的动画颜色 */
+html.dark {
+  --ripple-color: rgba(34, 197, 94, 0.15);
+}
+
+/* 防止动画期间出现闪烁 */
+.theme-toggle-ripple ~ * {
+  transition: none !important;
+}
+
+/* 确保所有内容都在容器内 */
+* {
+  max-width: 100%;
+}
+
+/* 防止图片溢出 */
+img {
+  max-width: 100%;
+  height: auto;
 }
 </style>
