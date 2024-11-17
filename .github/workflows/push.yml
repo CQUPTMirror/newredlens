@@ -3,7 +3,7 @@ name: Node.js CI
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -74,11 +74,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/cquptmirror/redlens:main
+            ghcr.io/cquptmirror/redlens:master
             ghcr.io/cquptmirror/redlens:dev
 
-            cquptmirror/redlens:main
+            cquptmirror/redlens:master
             cquptmirror/redlens:dev
 
-            reg.redrock.team/mirror/redlens:main
+            reg.redrock.team/mirror/redlens:master
             reg.redrock.team/mirror/redlens:dev
