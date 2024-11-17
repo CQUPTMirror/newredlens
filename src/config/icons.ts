@@ -19,10 +19,12 @@ const IconMap: Record<string, string> = {
   'debian-cd': 'i-devicon:debian',
   'debian-security': 'i-devicon:debian',
   'debian-nonfree': 'i-devicon:debian',
+  'deb-multimedia': 'i-devicon:debian',
   'deepin': 'i-simple-icons:deepin',
   'fedora': 'i-devicon:fedora',
   'fedora-altarch': 'i-devicon:fedora',
   'kali': 'i-devicon:kalilinux',
+  'kali-images': 'i-devicon:kalilinux',
   'manjaro': 'i-logos:manjaro',
   'openbsd': 'i-devicon:unix',
   'openeuler': 'i-devicon:linux',
@@ -32,6 +34,8 @@ const IconMap: Record<string, string> = {
   'ubuntu-ports': 'i-logos:ubuntu',
   'ubuntu-releases': 'i-logos:ubuntu',
   'ubuntukylin': 'i-devicon:ubuntu',
+  'endeavouros': 'i-simple-icons:endeavouros',
+  'proxmox': 'i-simple-icons:proxmox',
 
   // 开发工具和平台
   'anaconda': 'i-devicon:anaconda',
@@ -48,6 +52,8 @@ const IconMap: Record<string, string> = {
   'npm': 'i-devicon:npm',
   'pypi': 'i-devicon:pypi',
   'dotnet': 'i-devicon:dotnet',
+  'llvm-apt': 'i-devicon:llvm',
+  'termux': 'i-arcticons:termux',
 
   // 操作系统和内核
   'aosp': 'i-devicon:android',
@@ -69,29 +75,32 @@ const IconMap: Record<string, string> = {
   'quay': 'i-devicon:docker',
   'goproxy': 'i-devicon:go',
   'ghcr': 'i-simple-icons:github',
+  'github-release': 'i-simple-icons:github',
+  'fdroid': 'i-simple-icons:fdroid',
 
   // 软件和服务
   'apache': 'i-devicon:apache',
   'kde': 'i-simple-icons:kde',
   'kde-application': 'i-simple-icons:kde',
   'kubernetes': 'i-devicon:kubernetes',
+  'k8s': 'i-devicon:kubernetes',
   'kicad': 'i-file-icons:kicad',
   'wireshark': 'i-simple-icons:wireshark',
 
   // 硬件和驱动
   'raspberrypi': 'i-devicon:raspberrypi',
   'raspberry-pi-os-images': 'i-devicon:raspberrypi',
-  'nvidia': 'i-carbon:cloud-satellite',
+  'raspbian': 'i-devicon:raspberrypi',
+  'nvidia': 'i-simple-icons:nvidia',
 
   // 待优化图标
-  'armbian-dl': 'i-carbon:cloud-satellite',
   'ceph': 'i-carbon:cloud-satellite',
   'cygwin': 'i-carbon:cloud-satellite',
   'glibc': 'i-carbon:cloud-satellite',
-  'proxmox': 'i-carbon:cloud-satellite',
 
   // 自定义图标
   'armbian': 'i-custom-armbian',
+  'armbian-dl': 'i-custom-armbian',
 
   // 默认图标
   'default': 'i-carbon:cloud-satellite',
