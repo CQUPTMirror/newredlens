@@ -23,15 +23,15 @@ const readNewsIds = useLocalStorage('readNewsIds', new Set<string | number>())
 
 const FEEDBACK_URLS = {
   issue: {
-    url: 'https://github.com/your-repo/issues',
+    url: 'https://github.com/CQUPTMirror/Report/issues/new',
     label: 'Bug 或申请开新的镜像请提 issue',
   },
   email: {
-    url: 'mailto:redrock-sre@example.com',
+    url: 'mailto:sre@redrock.team',
     label: 'Redrock SRE 邮箱',
   },
   chat: {
-    url: '#cqupt-lug',
+    url: 'https://qm.qq.com/q/6GJz4XhqDK',
     label: 'CQUPT LUG 交流群',
   },
 } as const

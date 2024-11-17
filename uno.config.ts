@@ -26,7 +26,6 @@ export default defineConfig({
           './src/assets/icons',
           svg => svg.replace(/#fff/, 'currentColor'),
         ),
-        lucide: () => import('@iconify-json/lucide/icons.json').then(i => i.default),
       },
       extraProperties: {
         'display': 'inline-block',
