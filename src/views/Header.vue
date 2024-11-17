@@ -1,73 +1,127 @@
 <script setup lang="ts">
+import { NMenu } from 'naive-ui'
 import { useTheme } from '@/hooks/use-theme'
+import { navItems } from '@/config/nav'
 
 const emit = defineEmits<{
-  (e: 'listUpdate', choice: number): void
+  (e: 'toggleSidebar'): void
 }>()
-const { isDark } = useTheme()
-const navItems = [
-  {
-    text: '镜像源列表',
-    onClick: () => emit('listUpdate', 1),
-  },
-  {
-    text: '反向代理列表',
-    onClick: () => emit('listUpdate', 2),
-  },
-  {
-    text: 'Git镜像列表',
-    onClick: () => emit('listUpdate', 3),
-  },
-  {
-    text: '系统状态',
-    href: '/status.html',
-    target: '_blank',
-  },
-  {
-    text: '使用帮助',
-    href: 'https://help.mirrors.cqupt.edu.cn',
-  },
-]
 
-function toggleTheme() {
-  isDark.value = !isDark.value
+const { isDark, toggleTheme } = useTheme()
+
+let clickCount = 0
+let clickTimer: number | null = null
+
+function handleLogoClick() {
+  clickCount++
+  if (clickTimer) {
+    clearTimeout(clickTimer)
+  }
+
+  clickTimer = window.setTimeout(() => {
+    if (clickCount >= 3) {
+      const logo = document.querySelector('.logo-img') as HTMLElement
+      logo?.classList.add('logo-spin')
+      setTimeout(() => {
+        logo?.classList.remove('logo-spin')
+      }, 500)
+    }
+    clickCount = 0
+  }, 500)
 }
 </script>
 
 <template>
-  <div class="flex justify-between items-end shadow-violet md:flex-col md:items-center">
-    <div class="flex items-end justify-center sm:flex-wrap">
-      <img
-        class="h-60px mr-10px sm:mr-0"
-        alt="logo"
-        src="../assets/oss-logo.svg"
-      >
-      <div>
-        <h2 class="mt-10px mb-0 font-bold">
-          重庆邮电大学开源镜像站
-        </h2>
-      </div>
-    </div>
+  <div class="h-auto lg:h-28 border-b border-gray-200 dark:border-gray-800">
+    <div class="h-full">
+      <!-- 移动端布局 -->
+      <div class="lg:hidden flex flex-col py-4">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-3">
+            <img
+              class="logo-img h-9 w-auto"
+              alt="CQUPT Logo"
+              src="../assets/oss-logo.svg"
+              @click="handleLogoClick"
+            >
+            <div class="flex flex-col">
+              <h1 class="text-lg font-medium text-gray-900 dark:text-gray-50">
+                重庆邮电大学开源镜像站
+              </h1>
+            </div>
+          </div>
 
-    <div class="flex items-center md:mt-24px">
-      <nav class="text-center">
-        <a
-          v-for="(item, index) in navItems"
-          :key="index"
-          class="text-base mx-5 text-[#666] hover:text-blue-500 transition-colors cursor-pointer inline-block"
-          :href="item.href"
-          :target="item.target"
-          @click="item.onClick && item.onClick()"
-        >
-          {{ item.text }}
-        </a>
-      </nav>
-      <div
-        class="ml-5 cursor-pointer text-[#666] hover:text-blue-500 transition-colors"
-        @click="toggleTheme"
-      >
-        <div :class="isDark ? 'i-carbon-moon' : 'i-carbon-sun'" class="text-xl" />
+          <div class="flex items-center gap-3">
+            <div
+              class="w-9 h-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+              @click="toggleTheme"
+            >
+              <div :class="isDark ? 'i-carbon-moon' : 'i-carbon-sun'" class="text-base text-gray-600 dark:text-gray-300" />
+            </div>
+            <div
+              class="w-9 h-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+              @click="emit('toggleSidebar')"
+            >
+              <div class="i-carbon-menu text-base text-gray-600 dark:text-gray-300" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <NMenu
+            mode="horizontal"
+            :options="navItems"
+            class="min-w-max"
+            :inline-theme="false"
+            :inverted="isDark"
+          />
+        </div>
+      </div>
+
+      <!-- 桌面端布局 -->
+      <div class="hidden lg:flex h-full items-center justify-between">
+        <div class="flex items-center gap-6">
+          <img
+            class="logo-img h-12 w-auto cursor-pointer"
+            alt="CQUPT OSS Logo"
+            src="../assets/oss-logo.svg"
+            @click="handleLogoClick"
+          >
+          <div class="flex items-center">
+            <h1 class="text-2xl font-medium text-gray-900 dark:text-gray-50">
+              重庆邮电大学开源镜像站
+            </h1>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <NMenu
+            mode="horizontal"
+            :options="navItems"
+            class="min-w-[320px] text-base"
+            :inline-theme="false"
+            :inverted="isDark"
+          />
+          <div
+            class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+            @click="toggleTheme"
+          >
+            <div :class="isDark ? 'i-carbon-moon' : 'i-carbon-sun'" class="text-lg text-gray-600 dark:text-gray-300" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+/* 只保留 Logo 旋转动画相关样式 */
+.logo-spin {
+  animation: spin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+</style>

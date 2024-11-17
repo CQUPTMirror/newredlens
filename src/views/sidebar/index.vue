@@ -103,14 +103,14 @@ function handleFeedback(type: keyof typeof FEEDBACK_URLS) {
 <template>
   <div class="h-full flex flex-col">
     <!-- 公告与新闻 -->
-    <section class="mb-8 p-3 rounded-lg">
+    <section class="mb-8">
       <div class="flex items-center gap-2 mb-4">
         <i class="i-carbon-notification text-xl text-green-500 dark:text-green-300" />
         <h3 class="text-base font-semibold text-gray-800 dark:text-gray-100 m-0">
-          公告与新闻
+          最新公告
         </h3>
       </div>
-      <div class="space-y-3">
+      <div class="space-y-2">
         <div
           v-for="news in newsList"
           :key="news.id"
@@ -127,53 +127,23 @@ function handleFeedback(type: keyof typeof FEEDBACK_URLS) {
             type="info"
             round
           >
-            NEW！
+            NEW!
           </NTag>
         </div>
       </div>
     </section>
 
-    <!-- 域名选择 -->
-    <section class="mb-8 p-3 rounded-lg">
-      <div class="flex items-center gap-2 mb-4">
-        <i class="i-carbon-link text-xl text-green-500 dark:text-green-300" />
-        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-50 m-0">
-          域名选择
-        </h3>
-      </div>
-      <div class="space-y-2.5">
-        <div
-          v-for="domain in MIRROR_DOMAINS"
-          :key="domain.url"
-          class="flex items-center gap-3"
-        >
-          <a
-            :href="domain.url"
-            class="text-sm text-gray-600 hover:text-green-500 dark:text-gray-200 dark:hover:text-green-300 transition-colors"
-          >
-            {{ domain.url.replace('https://', '') }}
-          </a>
-          <span class="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200">
-            {{ domain.label }}
-          </span>
-        </div>
-      </div>
-    </section>
-
     <!-- 获取发行版映像 -->
-    <section class="mb-8 p-3 rounded-lg">
+    <section class="mb-8">
       <div class="flex items-center gap-2 mb-4">
         <i class="i-carbon-download text-xl text-green-500 dark:text-green-300" />
         <h3 class="text-base font-semibold text-gray-800 dark:text-gray-50 m-0">
           获取发行版映像
         </h3>
       </div>
-      <p class="text-sm text-gray-500 dark:text-gray-300 mb-3">
-        提供各大主流 Linux 发行版的安装镜像 / ISO 文件
-      </p>
       <NButton
         type="primary"
-        class="w-48 h-9 text-sm rounded-md transition-all duration-200 flex items-center justify-center gap-2 hover:translate-y-[-1px] hover:shadow-md active:translate-y-0 active:shadow-none"
+        class="w-full h-9 text-sm rounded-md transition-all duration-200 flex items-center justify-center gap-2"
         @click="handleGetIso"
       >
         <div class="i-carbon-download text-lg" />
@@ -181,12 +151,39 @@ function handleFeedback(type: keyof typeof FEEDBACK_URLS) {
       </NButton>
     </section>
 
+    <!-- 域名选择 -->
+    <section class="mb-8">
+      <div class="flex items-center gap-2 mb-4">
+        <i class="i-carbon-link text-xl text-green-500 dark:text-green-300" />
+        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-50 m-0">
+          镜像源地址
+        </h3>
+      </div>
+      <div class="space-y-2">
+        <div
+          v-for="domain in MIRROR_DOMAINS"
+          :key="domain.url"
+          class="flex items-center gap-2"
+        >
+          <a
+            :href="domain.url"
+            class="text-sm text-gray-600 hover:text-green-500 dark:text-gray-200 dark:hover:text-green-300 transition-colors"
+          >
+            {{ domain.url.replace('https://', '') }}
+          </a>
+          <span class="text-xs px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200">
+            {{ domain.label }}
+          </span>
+        </div>
+      </div>
+    </section>
+
     <!-- 反馈建议 -->
-    <section class="mb-8 p-3 rounded-lg">
+    <section class="mb-8">
       <div class="flex items-center gap-2 mb-4">
         <i class="i-carbon-chat-bot text-xl text-green-500 dark:text-green-300" />
         <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 m-0">
-          反馈建议
+          问题反馈
         </h3>
       </div>
       <div class="space-y-2">
@@ -206,7 +203,7 @@ function handleFeedback(type: keyof typeof FEEDBACK_URLS) {
       </div>
     </section>
 
-    <!-- ISO -->
+    <!-- ISO Modal -->
     <NModal
       v-model:show="showIso"
       preset="card"
@@ -220,7 +217,8 @@ function handleFeedback(type: keyof typeof FEEDBACK_URLS) {
             <a
               href="https://help.mirrors.cqupt.edu.cn"
               class="text-green-500 hover:text-green-600 dark:text-green-300 dark:hover:text-green-200"
-              blank
+              target="_blank"
+              rel="noopener noreferrer"
             >
               帮助文档
             </a>

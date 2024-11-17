@@ -26,6 +26,7 @@ export default defineConfig({
           './src/assets/icons',
           svg => svg.replace(/#fff/, 'currentColor'),
         ),
+        lucide: () => import('@iconify-json/lucide/icons.json').then(i => i.default),
       },
       extraProperties: {
         'display': 'inline-block',
@@ -40,4 +41,11 @@ export default defineConfig({
       },
     }),
   ],
+  theme: {
+    dark: {
+      bg: {
+        dark: '#1a1a1a',
+      },
+    },
+  },
 })

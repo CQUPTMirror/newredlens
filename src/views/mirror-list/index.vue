@@ -3,5 +3,7 @@ import MirrorList from './components/list.vue'
 </script>
 
 <template>
-  <MirrorList />
+  <div class="w-full overflow-hidden">
+    <MirrorList />
+  </div>
 </template>

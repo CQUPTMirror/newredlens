@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { MirrorItem } from '@/api/mirrors'
-import Icon from '@/components/icon.vue'
 import { getIconClass } from '@/config/icons'
 
 const props = defineProps<{
   mirror: MirrorItem
+  selected?: boolean
 }>()
 
-const iconClass = computed(() => {
-  const cls = getIconClass(props.mirror.id)
-  return cls
-})
+const emit = defineEmits<{
+  (e: 'click'): void
+}>()
+
+const iconClass = computed(() => getIconClass(props.mirror.id))
 
 function getStatusColor(status: string) {
   switch (status.toLowerCase()) {
@@ -65,72 +66,93 @@ function formatTime(timestamp: number): string {
     return '未知'
   return new Date(timestamp * 1000).toLocaleString()
 }
+
+function handleClick(e: MouseEvent) {
+  emit('click')
+  if (!props.mirror.url && !props.mirror.id) {
+    e.preventDefault()
+  }
+}
 </script>
 
 <template>
-  <a
-    :href="mirror.url || `/${mirror.id}/`"
-    class="block bg-white dark:bg-gray-800 rounded-md shadow transition-all duration-300 group no-hover-line hover:shadow-primary/20 hover:shadow-lg dark:hover:shadow-primary/10"
+  <div
+    class="bg-white dark:bg-slate-800 rounded-lg transition-all duration-300"
+    :class="selected ? 'card-selected' : 'hover:shadow-md'"
   >
-    <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <Icon :name="iconClass" />
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white transition-colors group-hover:text-primary">
-            {{ mirror.alias }}
-          </h3>
-        </div>
-        <div class="px-2 py-1 rounded-full text-sm font-medium" :class="getStatusColor(mirror.status)">
-          {{ getStatusText(mirror.status) }}
+    <a
+      :href="mirror.url || `/${mirror.id}/`"
+      class="block bg-white dark:bg-gray-800 rounded-md transition-all duration-300 group no-hover-line cursor-pointer"
+      :class="selected ? 'shadow-gray-200 dark:shadow-gray-700' : 'shadow hover:shadow-gray-200 hover:shadow-lg dark:hover:shadow-gray-700'"
+      @click.stop="handleClick"
+    >
+      <div class="px-4 py-2 border-b border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 flex items-center justify-center transition-transform duration-300"
+              :class="selected ? 'scale-140' : 'group-hover:scale-125'"
+            >
+              <span :class="iconClass" />
+            </div>
+            <h3
+              class="text-lg font-semibold transition-all duration-300 origin-left"
+              :class="selected ? 'text-primary scale-120' : 'text-gray-900 dark:text-white group-hover:text-primary group-hover:scale-115'"
+            >
+              {{ mirror.alias }}
+            </h3>
+          </div>
+          <div class="px-2 py-0.5 rounded-full text-sm font-medium" :class="getStatusColor(mirror.status)">
+            {{ getStatusText(mirror.status) }}
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="px-4 py-3 min-h-[64px] flex flex-col justify-between">
-      <div class="flex items-start justify-between">
-        <div class="px-2 py-1 rounded text-sm font-medium shrink-0" :class="getTypeColor(mirror.type)">
-          {{ getTypeText(mirror.type) }}
+      <div class="px-4 py-2 min-h-[56px] flex flex-col justify-between">
+        <div class="flex items-start justify-between">
+          <div class="px-2 py-0.5 rounded text-sm font-medium shrink-0" :class="getTypeColor(mirror.type)">
+            {{ getTypeText(mirror.type) }}
+          </div>
+          <div class="flex-1 ml-3">
+            <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 text-right h-[1.25rem]">
+              {{ mirror.desc }}
+            </p>
+          </div>
         </div>
-        <p
-          v-if="mirror.desc"
-          class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 text-right flex-1 ml-3"
-        >
-          {{ mirror.desc }}
-        </p>
+
+        <div class="flex items-center justify-between text-sm mt-1.5">
+          <div class="flex items-center gap-1">
+            <span class="text-gray-500 dark:text-gray-400">大小：</span>
+            <span class="text-gray-700 dark:text-gray-200">{{ mirror.sizeStr }}</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="text-gray-500 dark:text-gray-400">更新于：</span>
+            <span class="text-gray-700 dark:text-gray-200">{{ formatTime(mirror.lastUpdate) }}</span>
+          </div>
+        </div>
       </div>
 
-      <div class="flex items-center justify-between text-sm mt-2">
-        <div class="flex items-center gap-1">
-          <span class="text-gray-500 dark:text-gray-400">大小：</span>
-          <span class="text-gray-700 dark:text-gray-200">{{ mirror.sizeStr }}</span>
-        </div>
-        <div class="flex items-center gap-1">
-          <span class="text-gray-500 dark:text-gray-400">更新于：</span>
-          <span class="text-gray-700 dark:text-gray-200">{{ formatTime(mirror.lastUpdate) }}</span>
+      <div class="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-b-md">
+        <div class="flex justify-end items-center">
+          <a
+            v-if="mirror.helpUrl"
+            :href="`https://help.mirrors.cqupt.edu.cn/${mirror.helpUrl}/?mirror=CQUPT`"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 no-hover-line"
+            @click.stop
+          >
+            <span>使用帮助</span>
+            <div class="i-carbon-document text-base" />
+          </a>
+          <span v-else class="text-sm text-gray-400">暂无帮助文档</span>
         </div>
       </div>
-    </div>
-
-    <div class="px-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-b-md">
-      <div class="flex justify-end items-center">
-        <a
-          v-if="mirror.helpUrl"
-          :href="`https://help.mirrors.cqupt.edu.cn/${mirror.helpUrl}/?mirror=CQUPT`"
-          target="_blank"
-          class="inline-flex items-center gap-1.5 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 no-hover-line"
-          @click.stop
-        >
-          <span>使用帮助</span>
-          <div class="i-carbon-document text-base" />
-        </a>
-        <span v-else class="text-sm text-gray-400">暂无帮助文档</span>
-      </div>
-    </div>
-  </a>
+    </a>
+  </div>
 </template>
 
-<style scoped>
-:root {
-  --primary-color: #3eaf7c;
+<style>
+.card-selected {
+  @apply ring-2 ring-primary shadow-gray-200 dark:shadow-gray-700;
 }
 </style>
