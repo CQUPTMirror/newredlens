@@ -21,11 +21,14 @@ function toggleSidebar() {
 </script>
 
 <template>
-  <NConfigProvider :theme="themeConfig">
+  <NConfigProvider
+    :theme="themeConfig"
+    :inline-theme="false"
+  >
     <NMessageProvider>
       <NNotificationProvider>
-        <div class="min-h-screen flex flex-col">
-          <div class="container mx-auto px-4 lg:px-8">
+        <div class="min-h-screen flex flex-col relative overflow-x-clip">
+          <div class="content-wrapper mx-auto px-4 lg:px-8">
             <!-- Header -->
             <Header @toggle-sidebar="toggleSidebar" />
 
@@ -38,8 +41,10 @@ function toggleSidebar() {
 
               <!-- 桌面端侧边栏 -->
               <aside class="w-[300px] hidden lg:block shrink-0">
-                <div class="bg-white dark:bg-dark rounded-xl shadow-sm dark:shadow-md p-4 sticky top-6">
-                  <Sidebar />
+                <div class="sticky top-6" style="position: -webkit-sticky;">
+                  <div class="bg-white dark:bg-dark rounded-xl shadow-sm dark:shadow-md p-4">
+                    <Sidebar />
+                  </div>
                 </div>
               </aside>
 
@@ -146,38 +151,40 @@ a:hover::after {
 }
 
 /* 容器最大宽度响应式 */
-.container {
+.content-wrapper {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
 }
 
 @media (min-width: 640px) {
-  .container {
-    max-width: 100%;
+  .content-wrapper {
+    max-width: 640px;
   }
 }
 
 @media (min-width: 768px) {
-  .container {
-    max-width: 720px;
+  .content-wrapper {
+    max-width: 768px;
   }
 }
 
 @media (min-width: 1024px) {
-  .container {
-    max-width: 960px;
+  .content-wrapper {
+    max-width: 1024px;
   }
 }
 
 @media (min-width: 1280px) {
-  .container {
-    max-width: 1200px;
+  .content-wrapper {
+    max-width: 1280px;
   }
 }
 
 @media (min-width: 1536px) {
-  .container {
+  .content-wrapper {
     max-width: 1400px;
   }
 }

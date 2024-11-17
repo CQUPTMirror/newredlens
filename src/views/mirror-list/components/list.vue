@@ -118,6 +118,7 @@ const filteredMirrors = computed(() => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .grid {
   display: grid;
@@ -164,4 +165,3 @@ const filteredMirrors = computed(() => {
   }
 }
 </style>
-

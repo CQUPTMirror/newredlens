@@ -8,27 +8,6 @@ const emit = defineEmits<{
 }>()
 
 const { isDark, toggleTheme } = useTheme()
-
-let clickCount = 0
-let clickTimer: number | null = null
-
-function handleLogoClick() {
-  clickCount++
-  if (clickTimer) {
-    clearTimeout(clickTimer)
-  }
-
-  clickTimer = window.setTimeout(() => {
-    if (clickCount >= 3) {
-      const logo = document.querySelector('.logo-img') as HTMLElement
-      logo?.classList.add('logo-spin')
-      setTimeout(() => {
-        logo?.classList.remove('logo-spin')
-      }, 500)
-    }
-    clickCount = 0
-  }, 500)
-}
 </script>
 
 <template>
@@ -39,10 +18,9 @@ function handleLogoClick() {
         <div class="flex items-center justify-between w-full">
           <div class="flex items-center gap-3">
             <img
-              class="logo-img h-9 w-auto"
+              class="h-9 w-auto"
               alt="CQUPT Logo"
               src="../assets/oss-logo.svg"
-              @click="handleLogoClick"
             >
             <div class="flex flex-col">
               <h1 class="text-lg font-medium text-gray-900 dark:text-gray-50">
@@ -82,10 +60,9 @@ function handleLogoClick() {
       <div class="hidden lg:flex h-full items-center justify-between">
         <div class="flex items-center gap-6">
           <img
-            class="logo-img h-12 w-auto cursor-pointer"
+            class="h-12 w-auto"
             alt="CQUPT OSS Logo"
             src="../assets/oss-logo.svg"
-            @click="handleLogoClick"
           >
           <div class="flex items-center">
             <h1 class="text-2xl font-medium text-gray-900 dark:text-gray-50">
@@ -113,15 +90,3 @@ function handleLogoClick() {
     </div>
   </div>
 </template>
-
-<style scoped>
-/* 只保留 Logo 旋转动画相关样式 */
-.logo-spin {
-  animation: spin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-</style>

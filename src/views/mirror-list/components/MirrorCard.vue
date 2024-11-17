@@ -77,12 +77,12 @@ function handleClick(e: MouseEvent) {
 
 <template>
   <div
-    class="bg-white dark:bg-slate-800 rounded-lg transition-all duration-300"
+    class="bg-white dark:bg-slate-800 rounded-lg transition-all duration-300 w-full"
     :class="selected ? 'card-selected' : 'hover:shadow-md'"
   >
     <a
       :href="mirror.url || `/${mirror.id}/`"
-      class="block bg-white dark:bg-gray-800 rounded-md transition-all duration-300 group no-hover-line cursor-pointer"
+      class="block bg-white dark:bg-gray-800 rounded-md transition-all duration-300 group no-hover-line cursor-pointer w-full"
       :class="selected ? 'shadow-gray-200 dark:shadow-gray-700' : 'shadow hover:shadow-gray-200 hover:shadow-lg dark:hover:shadow-gray-700'"
       @click.stop="handleClick"
     >
@@ -109,25 +109,25 @@ function handleClick(e: MouseEvent) {
       </div>
 
       <div class="px-4 py-2 min-h-[56px] flex flex-col justify-between">
-        <div class="flex items-start justify-between">
+        <div class="flex items-start justify-between w-full">
           <div class="px-2 py-0.5 rounded text-sm font-medium shrink-0" :class="getTypeColor(mirror.type)">
             {{ getTypeText(mirror.type) }}
           </div>
-          <div class="flex-1 ml-3">
-            <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 text-right h-[1.25rem]">
+          <div class="flex-1 ml-3 min-w-0">
+            <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 text-right h-[1.25rem] break-all">
               {{ mirror.desc }}
             </p>
           </div>
         </div>
 
-        <div class="flex items-center justify-between text-sm mt-1.5">
-          <div class="flex items-center gap-1">
-            <span class="text-gray-500 dark:text-gray-400">大小：</span>
-            <span class="text-gray-700 dark:text-gray-200">{{ mirror.sizeStr }}</span>
+        <div class="flex items-center justify-between text-sm mt-1.5 w-full">
+          <div class="flex items-center gap-1 min-w-0">
+            <span class="text-gray-500 dark:text-gray-400 whitespace-nowrap">大小：</span>
+            <span class="text-gray-700 dark:text-gray-200 truncate">{{ mirror.sizeStr }}</span>
           </div>
-          <div class="flex items-center gap-1">
-            <span class="text-gray-500 dark:text-gray-400">更新于：</span>
-            <span class="text-gray-700 dark:text-gray-200">{{ formatTime(mirror.lastUpdate) }}</span>
+          <div class="flex items-center gap-1 min-w-0">
+            <span class="text-gray-500 dark:text-gray-400 whitespace-nowrap">更新于：</span>
+            <span class="text-gray-700 dark:text-gray-200 truncate">{{ formatTime(mirror.lastUpdate) }}</span>
           </div>
         </div>
       </div>
@@ -151,7 +151,7 @@ function handleClick(e: MouseEvent) {
   </div>
 </template>
 
-<style>
+<style lang="uno">
 .card-selected {
   @apply ring-2 ring-primary shadow-gray-200 dark:shadow-gray-700;
 }
