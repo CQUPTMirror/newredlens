@@ -5,8 +5,8 @@
   "description": "A template of vue3",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm vue-tsc --noEmit && pnpm vite build",
-    "preview": "pnpm vite preview",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint . --cache",
     "format": "prettier --write ."
   },

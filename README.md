@@ -14,31 +14,25 @@ git push --tag
 
 ## Installing / Getting started
 
-
 ```
-yarn 
+pnpm install
 ```
-
 
 ## Developing
 ```
-yarn run dev / vite
-```
-or if you need:
-
-
-```
-yarn only-build (Temporary solution）
+pnpm dev
 ```
 
 ```
-yarn run serve
+pnpm build
+```
+
+```
+pnpm preview
 ```
 Please refer to `package.json`  if you want to learn more
-
 
 ## Links
 [How-to](https://github.com/CQUPTMirror/cqupt-mirrors-howto)
 
 [Report](https://github.com/CQUPTMirror/Report)
-
