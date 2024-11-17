@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
       - run: |
-          yarn install
-          yarn build
+          npm install -g pnpm
+          pnpm install
+          pnpm build
           tar caf dist.tar.xz dist
         env:
           CI: true
@@ -63,7 +64,7 @@ jobs:
           username: ${{ secrets.REDROCK_USERNAME }}
           password: ${{ secrets.REDROCK_PASSWORD }}
       - name: Build and Push Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
