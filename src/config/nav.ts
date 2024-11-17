@@ -1,47 +1,55 @@
 import type { MenuOption } from 'naive-ui'
 import { h } from 'vue'
 
-function renderLabel(label: string, href?: string, target?: string) {
-  if (!href) {
-    return label
-  }
-  return () => h(
-    'a',
-    {
-      href,
-      target,
-      rel: target === '_blank' ? 'noopener noreferrer' : undefined,
-      class: 'text-sm font-medium no-hover-line',
-    },
-    { default: () => label },
-  )
-}
-
 export const navItems: MenuOption[] = [
   {
-    label: renderLabel('镜像列表', '/'),
-    key: 'mirrors',
-  },
-  {
-    label: renderLabel('系统状态', '/status'),
+    label: () => h(
+      'a',
+      {
+        href: '/status.html',
+        class: 'text-sm font-medium no-hover-line',
+      },
+      '系统状态',
+    ),
     key: 'status',
   },
   {
-    label: renderLabel('帮助文档', '/help'),
+    label: () => h(
+      'a',
+      {
+        href: 'https://help.mirrors.cqupt.edu.cn',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        class: 'text-sm font-medium no-hover-line',
+      },
+      '帮助文档',
+    ),
     key: 'help',
   },
   {
-    label: '相关链接',
-    key: 'links',
-    children: [
+    label: () => h(
+      'a',
       {
-        label: renderLabel('前端', 'https://github.com/CQUPTMirror/newredlens', '_blank'),
-        key: 'github',
+        href: 'https://github.com/CQUPTMirror/newredlens',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        class: 'text-sm font-medium no-hover-line',
       },
+      '前端仓库',
+    ),
+    key: 'fe',
+  },
+  {
+    label: () => h(
+      'a',
       {
-        label: renderLabel('镜像管理器 kubesync', 'https://github.com/CQUPTMirror/kubesync', '_blank'),
-        key: 'api',
+        href: 'https://github.com/CQUPTMirror/kubesync',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        class: 'text-sm font-medium no-hover-line',
       },
-    ],
+      'kubesync',
+    ),
+    key: 'api',
   },
 ]

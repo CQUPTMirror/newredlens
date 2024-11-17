@@ -50,8 +50,6 @@ const { isDark, toggleTheme } = useTheme()
             mode="horizontal"
             :options="navItems"
             class="min-w-max"
-            :inline-theme="false"
-            :inverted="isDark"
           />
         </div>
       </div>

@@ -150,9 +150,3 @@ function handleClick(e: MouseEvent) {
     </a>
   </div>
 </template>
-
-<style lang="uno">
-.card-selected {
-  @apply ring-2 ring-primary shadow-gray-200 dark:shadow-gray-700;
-}
-</style>
