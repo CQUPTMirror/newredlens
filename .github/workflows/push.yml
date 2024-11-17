@@ -20,7 +20,7 @@ jobs:
           node-version: 18
       - run: |
           yarn install
-          yarn only-build
+          yarn build
           tar caf dist.tar.xz dist
         env:
           CI: true
