@@ -26,7 +26,7 @@ const IconMap: Record<string, string> = {
   'kali': 'i-devicon:kalilinux',
   'kali-images': 'i-devicon:kalilinux',
   'manjaro': 'i-logos:manjaro',
-  'openbsd': 'i-devicon:unix',
+  //'openbsd': 'i-devicon:unix',
   'openeuler': 'i-devicon:linux',
   'opensuse': 'i-devicon:opensuse',
   'ubuntu': 'i-logos:ubuntu',
@@ -101,6 +101,7 @@ const IconMap: Record<string, string> = {
   // 自定义图标
   'armbian': 'i-custom-armbian',
   'armbian-dl': 'i-custom-armbian',
+  'openbsd': 'i-custom-openbsd',
 
   // 默认图标
   'default': 'i-carbon:cloud-satellite',
